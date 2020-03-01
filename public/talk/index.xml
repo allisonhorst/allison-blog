@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent &amp; Upcoming Talks | Allison Horst</title>
+    <link>/talk/</link>
+      <atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent &amp; Upcoming Talks</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Recent &amp; Upcoming Talks</title>
+      <link>/talk/</link>
+    </image>
+    
+    <item>
+      <title>R for Excel Users Workshop at RStudio Conference 2020</title>
+      <link>/talk/r_for_excel_2020/</link>
+      <pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/talk/r_for_excel_2020/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>SCCWRP Data Visualization Workshop</title>
+      <link>/talk/sccwrp_dataviz_2019/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>/talk/sccwrp_dataviz_2019/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Quantitative skills and R/RStudio workshop for incoming Bren PhD students</title>
+      <link>/talk/bren_phd_workshop/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/talk/bren_phd_workshop/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Bren alumni R-refresher workshop</title>
+      <link>/talk/bren_alumni_2019/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>/talk/bren_alumni_2019/</guid>
+      <description>
+
+
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

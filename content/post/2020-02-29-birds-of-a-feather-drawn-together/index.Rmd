@@ -22,9 +22,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 *By Allison Horst, Curtis Kephardt, and Yanina Bella*
 
-*Cross-posted with YANINA LINK HERE*
+*Cross-posted:*
 
-![](bof_herobanner_bluebg_final.png)
+<center>
+  <img src="bof_herobanner_bluebg_final.png" width="600px"></a>
+  <figcaption>Birds of a Feather banner for RStudio::conf(2020)!</figcaption>
+</center>
 
 The "[Birds of a Feather](http://community.rstudio.com/bof)" (BoF) sessions at the [2020 RStudio Conference](https://rstudio.com/conference/) were a place where R-users with similar backgrounds, interests, and aspirations could connect in a low-stress social setting. In other words - these sessions let "birds of a feather flock together." Building on the 2019 conference swag, we rolled out a bunch of new BoF buttons for rstudio::conf 2020.
 
@@ -45,21 +48,27 @@ It turns out the answer to "What can you fit on a 1.5" button?" is...actually qu
 ### Data science team leaders
 Featuring 80’s beach volleyball sandpiper coach leading a team of R users:
 
-![](team_leaders_v1.png)
+<center>
+  <img src="team_leaders_v1.png" width="400px"></a>
+</center>
 
 **Fun fact:** a group of sandpipers can be called a *fling* or a *bind*. 
 
 ### Natural language processing
 Featuring a wordy bird - a parrot! 
 
-![](natural_language_processing_v1.png)
+<center>
+  <img src="natural_language_processing_v1.png" width="400px"></a>
+</center>
 
 **Fun facts:** Groups of parrots are sometimes called *companies*, a *prattles*, or *pandemoniums*. Also, parrots are the only birds that can use their feet (like hands) to serve themselves food. And one more thing - the text in the background of this design is a line from Patrick Rothfuss’ *The Name of the Wind* (one of artist @allison_horst’s favorite books). 
 
 ### The spatially aware carrier pigeon...
 ...checking flight routes before setting off on their next delivery:
 
-![](spatial_v2.png)
+<center>
+  <img src="spatial_v2.png" width="400px"></a>
+</center>
 
 **Fun fact:** A group of pigeons is sometimes called a *kit* or a *loft*.
 
@@ -69,7 +78,9 @@ Several of the designs - especially R-Latin America, R-Africa, and R-Ladies - de
 
 ### R-Latin America
 
-![](r_latin_america_bof_v2.png)
+<center>
+  <img src="r_latin_america_bof_v2.png" width="400px"></a>
+</center>
 
 The R-Latin America BoF button was truly a collaborative effort, with every detail - from bird to branch - created based on ideas and input from R-Latin America community members. Massive thanks to the R-Latin America design contributors (and thank you to @yabellini for providing this compiled list & text):
 
@@ -87,7 +98,9 @@ Here are some insights into the final design elements:
 
 ### AfricaR
 
-![](africar.png)
+<center>
+  <img src="africar.png" width="400px"></a>
+</center>
 
 The AfricaR BoF button was designed with suggestions and feedback from AfricaR community leaders [Shelmith Kariuki](https://twitter.com/Shel_Kariuki) and [Dennis Irorere](https://twitter.com/Denironyx). 
 
@@ -99,7 +112,9 @@ Some design elements for the AfricaR button:
 
 ### R-Ladies
 
-![](rladies_bof.png)
+<center>
+  <img src="rladies_bof.png" width="400px"></a>
+</center>
 
 The R-Ladies BoF button started with an idea from R-Ladies founder [Gabriela de Quiroz](https://twitter.com/gdequeiroz), who suggested a gull as a nod to both R-Ladies’ beginnings in San Francisco, and to this year’s conference location! 
 
@@ -113,7 +128,9 @@ With feedback from Gabriela and the R-Ladies leadership team including [Laura Ac
 
 This year, there were 24(!) different Birds of a Feather buttons. When we put them all together, here’s the flock for the 2020 conference (with more planned for next year):
 
-![](all_bof.png)
+<center>
+  <img src="all_bof.png" width="600px"></a>
+</center>
 
 We hope that everyone can find a bird that they relate to, and we look forward to meeting many of you at future RStudio Conference BoF sessions!
 

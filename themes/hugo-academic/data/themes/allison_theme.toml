@@ -5,14 +5,14 @@ name = "allison_theme"
 light = true
 
 # Primary
-primary = "#970057"
+primary = "#9c00c6"
 
 # Menu
-menu_primary = "#970057" # 500
-menu_text = "#e0e1db"
-menu_text_active = "#c7ce33" # A100
-menu_title = "#f3ff00"
+menu_primary = "#ffffff" # 500
+menu_text = "#00b19c"
+menu_text_active = "#f300ff" # A100
+menu_title = "#9c00c6"
 
 # Home sections
-home_section_odd = "#fcffb6"
-home_section_even = "#f5f5f2"
+home_section_odd = "#eeeeee"
+home_section_even = "#ffffff"

@@ -23,12 +23,12 @@
   </url>
   
   <url>
-    <loc>/categories/art/</loc>
+    <loc>/tags/art/</loc>
     <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/art/</loc>
+    <loc>/categories/art/</loc>
     <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>
   
@@ -48,22 +48,22 @@
   </url>
   
   <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/r/</loc>
     <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/rstudio/</loc>
+    <loc>/categories/r/</loc>
     <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/rstudio/</loc>
+    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rstudio/</loc>
     <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>
   
@@ -135,6 +135,41 @@
   <url>
     <loc>/talk/bren_alumni_2019/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/case-study/</loc>
+    <lastmod>2019-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/champions/</loc>
+    <lastmod>2019-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/horst-lab/</loc>
+    <lastmod>2019-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/impact/</loc>
+    <lastmod>2019-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/how-to/</loc>
+    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/tidytuesday/</loc>
+    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/study-group/</loc>
+    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>

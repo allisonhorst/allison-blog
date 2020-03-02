@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE)
 ```
 
-I made this little self-tutorial last year because I was **really** excited about being able to more simply customize tables with the [`gt`](https://github.com/rstudio/gt) package by [@rich_iannone](https://twitter.com/riannone).
+I made this little self-tutorial last year because I was **really** excited about being able to more simply customize tables with the [`gt`](https://github.com/rstudio/gt) package by [Rich Iannone](https://twitter.com/riannone).
 
 I also quickly realized that I needed to do some simple examples to get started. Here are a few different `gt` tables that worked, using short examples with data existing in the *datasets* package or that I create here. 
 
@@ -61,7 +61,7 @@ rock %>% # Get 'rock' data
 
 Biological oxygen demand table (BOD)
 
-Use the built-in dataset BOD to create a simple customized table. The BOD dataset (see ?BOD for documentation) has two columns: **Time** and **demand** (both numeric).
+Use the built-in dataset BOD to create a simple customized table. The BOD dataset (see `?BOD` for documentation) has two columns: **Time** and **demand** (both numeric).
 
 ```{r}
 
@@ -88,7 +88,7 @@ gt() %>% # use 'gt' to make an awesome table...
 
 ToothGrowth (VitC effect on tooth growth in guinea pigs)
 
-See ?ToothGrowth for dataset documentation. The ToothGrowth dataset has three variables: **len** (tooth length), **supp** (supplement ID), **dose** (dosage). I use group_by + summarize here to find mean tooth length grouped by supplement and dosage first, then create a table of the means. 
+See `?ToothGrowth` for dataset documentation. The ToothGrowth dataset has three variables: **len** (tooth length), **supp** (supplement ID), **dose** (dosage). I use `group_by()` + `summarize()` here to find mean tooth length grouped by supplement and dosage first, then create a table of the means. 
 
 ```{r}
 
@@ -161,7 +161,7 @@ tooth_length %>% # Take tooth_length
 
 ### Example 3 
 
-#### Updating NAs, hiding columns
+#### Updating `NA`s, hiding columns
 
 Using first 10 observations in the 'airquality' dataset. Existing variables: **Ozone**, **Solar.R**, **Wind**, **Temp**, **Month**, **Day** 
 
@@ -210,7 +210,6 @@ fake <- tribble( # Create a tibble...
 Then make a little table of 'fake' with values in scientific notation:
 
 ```{r}
-
 fake %>% 
   gt() %>% 
   tab_header(
@@ -234,7 +233,6 @@ fake %>%
   )
   )
   
-
 ```
 
 ### Example 5 
@@ -269,3 +267,5 @@ date_trial %>%
   )
 
 ```
+
+Give `gt` a whirl! For me, the trade-off of writing more lines- but ones that I can easily understand and control when customizing tables - is well worth it, and actually pretty fun. 

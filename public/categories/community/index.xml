@@ -99,13 +99,14 @@ photo by Brunel Johnson with art by Allison Horst
     </item>
     
     <item>
-      <title>Champions Case Study: Horst Lab</title>
+      <title>Openscapes Champions Case Study: Horst Lab</title>
       <link>/post/horst-lab/</link>
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       <guid>/post/horst-lab/</guid>
       <description>
 
 
+&lt;p&gt;&lt;em&gt;Note: I, with my teaching assistant extraordinaire Jessica Couture, participated in the 10-week Openscapes Mentorship Program led by Dr. Julia Lowndes in 2019. Here’s a wrap-up we wrote of some of our efforts and progress through Openscapes!&lt;/em&gt;&lt;/p&gt;
 &lt;div id=&#34;champions-case-study-horst-lab&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Champions Case Study: Horst Lab&lt;/h1&gt;
 &lt;div id=&#34;crossposted-at-openscapes.org&#34; class=&#34;section level2&#34;&gt;
@@ -133,7 +134,7 @@ Tidyverse nebula by Allison Horst
 &lt;ul&gt;
 &lt;li&gt;Converted ESM 206 / 244 lectures to Google Slides for sharing&lt;/li&gt;
 &lt;li&gt;Collected all ESM 206 / 244 lab materials, now each an .Rproj, shared on GitHub!&lt;/li&gt;
-&lt;li&gt;Added GitHub to course goals for MESM students (success!)&lt;/li&gt;
+&lt;li&gt;Added GitHub to course goals for MESM students&lt;/li&gt;
 &lt;li&gt;Established &lt;a href=&#34;https://www.openscapes.org/blog/2019/05/02/tidy-tuesday-coding-club/&#34;&gt;weekly #tidytuesday hacky hours&lt;/a&gt; with Gracie White&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.openscapes.org/blog/2019/01/15/personify-code/&#34;&gt;Engaged w/ online #rstats community&lt;/a&gt;, learned a TON (esp. about useful functions, dataviz, and &lt;a href=&#34;https://twitter.com/allison_horst/status/1102447015248637953&#34;&gt;how awesome people are in the R community&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;Through twitter, &lt;a href=&#34;https://twitter.com/allison_horst/status/1069288639379603456&#34;&gt;connected with a lot of people in the R community&lt;/a&gt;&lt;/li&gt;

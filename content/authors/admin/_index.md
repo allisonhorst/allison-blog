@@ -15,9 +15,10 @@ education:
     year: 2005
 email: "ahorst@ucsb.edu"
 interests:
+- Teaching
+- Environmental science
 - Statistics
 - Data analysis
-- Environmental science
 - Science communication
 - Art
 name: Allison Horst

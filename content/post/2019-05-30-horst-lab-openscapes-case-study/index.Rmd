@@ -1,5 +1,5 @@
 ---
-title: "Champions Case Study: Horst Lab"
+title: "Openscapes Champions Case Study: Horst Lab"
 author: Horst Lab
 date: '2019-05-30'
 slug: horst-lab
@@ -11,6 +11,8 @@ tags:
   - case-study
 banner: img/blog/horst-tidyverse-nebula.jpg
 ---
+
+*Note: I, with my teaching assistant extraordinaire Jessica Couture, participated in the 10-week Openscapes Mentorship Program led by Dr. Julia Lowndes in 2019. Here's a wrap-up we wrote of some of our efforts and progress through Openscapes!*
 
 # Champions Case Study: Horst Lab 
 ## Crossposted at [openscapes.org](https://www.openscapes.org/blog/)
@@ -44,7 +46,7 @@ Our key accomplishments are:
 
 - Converted ESM 206 / 244 lectures to Google Slides for sharing
 - Collected all ESM 206 / 244 lab materials, now each an .Rproj, shared on GitHub!
-- Added GitHub to course goals for MESM students (success!)
+- Added GitHub to course goals for MESM students
 - Established [weekly #tidytuesday hacky hours](https://www.openscapes.org/blog/2019/05/02/tidy-tuesday-coding-club/) with Gracie White 
 - [Engaged w/ online #rstats community](https://www.openscapes.org/blog/2019/01/15/personify-code/), learned a TON (esp. about useful functions, dataviz, and [how awesome people are in the R community](https://twitter.com/allison_horst/status/1102447015248637953)) 
 - Through twitter, [connected with a lot of people in the R community](https://twitter.com/allison_horst/status/1069288639379603456) 

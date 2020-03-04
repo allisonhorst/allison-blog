@@ -1,6 +1,6 @@
 ---
 title: Birds of a feather, drawn together
-author: "Allison Horst, Curtis Kephart, Yanina Bella"
+author: "Allison Horst, Curtis Kephart, Yanina Bellini"
 date: '2020-02-29'
 slug: bof-artwork
 categories:
@@ -20,7 +20,7 @@ type: post
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-*By Allison Horst, Curtis Kephart, and Yanina Bella*
+*By Allison Horst, Curtis Kephart, and Yanina Bellini*
 
 *Cross-posted:*
 

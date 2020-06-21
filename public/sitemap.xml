@@ -19,12 +19,82 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/learnr/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/naniar/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/rstudio/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/teach-r-with-learnr/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/teaching/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/teaching/</loc>
+    <lastmod>2020-05-30T06:02:59-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/art/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/art/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rstudio/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-03-15-r-twitter-illustration-story/</loc>
+    <lastmod>2020-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,48 +103,8 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-03-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-03-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/art/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/art/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/bof-artwork/</loc>
     <lastmod>2020-02-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/rstudio/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rstudio/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>
   
   <url>
@@ -179,11 +209,6 @@
   
   <url>
     <loc>/post/share-keys/</loc>
-    <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/teaching/</loc>
     <lastmod>2019-04-29T00:00:00+00:00</lastmod>
   </url>
   

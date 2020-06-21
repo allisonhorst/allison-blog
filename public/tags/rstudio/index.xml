@@ -5,12 +5,54 @@
     <link>/tags/rstudio/</link>
       <atom:link href="/tags/rstudio/index.xml" rel="self" type="application/rss+xml" />
     <description>RStudio</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 29 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>RStudio</title>
       <link>/tags/rstudio/</link>
     </image>
+    
+    <item>
+      <title>The story of this drawing</title>
+      <link>/post/2020-03-15-r-twitter-illustration-story/</link>
+      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/post/2020-03-15-r-twitter-illustration-story/</guid>
+      <description>
+
+
+&lt;div id=&#34;walking-through-the-door&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Walking through the door&lt;/h3&gt;
+&lt;p&gt;I am always happy to see this illustration used to represent of the welcoming and encouraging #rstats community on twitter. When I drew it, my view was much smaller: I wanted to visualize how Dr. Julie Lowndes (Twitter: &lt;a href=&#34;https://twitter.com/juliesquid&#34;&gt;@juliesquid&lt;/a&gt;, website: &lt;a href=&#34;https://jules32.github.io/&#34; class=&#34;uri&#34;&gt;https://jules32.github.io/&lt;/a&gt;) had gently encouraged me to join twitter for the R community, and the amazement I felt upon opening the door. I was late to the party - finally dipping my toes into the #rstats twitter water in 2018. Two years later, it’s now my go-to place for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Staying up-to-date on what’s new in R&lt;/li&gt;
+&lt;li&gt;Meeting and communicating with new friends and collaborators&lt;/li&gt;
+&lt;li&gt;Learning new ideas and approaches for teaching stats and data science&lt;/li&gt;
+&lt;li&gt;Sharing my course materials and artwork&lt;/li&gt;
+&lt;li&gt;Listening to, and learning from, a diverse range of voices in R/data science/environmental science&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The rumors are true, people. It’s &lt;strong&gt;the&lt;/strong&gt; place to be if you’re learning, using, or teaching R.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-is-better-together&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;R is better together&lt;/h3&gt;
+&lt;p&gt;I’ve been teaching stats &amp;amp; data analysis in R at the &lt;a href=&#34;http://bren.ucsb.edu/&#34;&gt;Bren School of Environmental Science and Management&lt;/a&gt; since 2012. But &lt;em&gt;using and teaching R&lt;/em&gt; is very different from being a &lt;em&gt;happy R user and teacher&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Frankly, I was a lonely R user flailing around without a home base, and I didn’t even realize how much of a bummer that was.&lt;/p&gt;
+&lt;p&gt;In 2017, Julie serendipitously moved in to a cabin just one short down the road from me. Do you know what happens when you finally get to hang out with someone who loves using and teaching R as much as you do? &lt;strong&gt;You hang out all the time and never shut up about it.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It’s obnoxious.&lt;/p&gt;
+&lt;p&gt;We talk about using R on every hike.&lt;/p&gt;
+&lt;p&gt;We talk about teaching R over bonfires.&lt;/p&gt;
+&lt;p&gt;We talk about building inclusive R communities while romping with our dogs, Teddy and Khora, in the riverbed.&lt;/p&gt;
+&lt;p&gt;We talk about R frustrations while eating pizza.&lt;/p&gt;
+&lt;p&gt;We talk about R at SB R-Ladies (&lt;a href=&#34;https://twitter.com/RLadiesSB&#34; class=&#34;uri&#34;&gt;https://twitter.com/RLadiesSB&lt;/a&gt;), UCSB TidyTuesdays, and &lt;a href=&#34;https://eco-data-science.github.io/&#34;&gt;Eco-Data-Science&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It’s so obnoxious.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;joining-twitter-for-r-stats&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Joining twitter for R stats&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;using-twitter-for-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Using twitter for R&lt;/h3&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Birds of a feather, drawn together</title>
@@ -31,8 +73,8 @@ Birds of a Feather banner for RStudio::conf(2020)!
 &lt;p&gt;The “&lt;a href=&#34;http://community.rstudio.com/bof&#34;&gt;Birds of a Feather&lt;/a&gt;” (BoF) sessions at the &lt;a href=&#34;https://rstudio.com/conference/&#34;&gt;2020 RStudio Conference&lt;/a&gt; were a place where R-users with similar backgrounds, interests, and aspirations could connect in a low-stress social setting. In other words - these sessions let “birds of a feather flock together.” Building on the 2019 conference swag, we rolled out a bunch of new BoF buttons for rstudio::conf 2020.&lt;/p&gt;
 &lt;p&gt;Here we’ll share the process for how some of the designs were created, including several that truly involved a flock of contributors (names for groups of birds are from &lt;a href=&#34;https://www.birdspot.co.uk/articles/collective-nouns-for-birds&#34;&gt;Bird Spot&lt;/a&gt;).&lt;/p&gt;
 &lt;div id=&#34;well-what-can-we-realistically-fit-on-a-1.5-button&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Well, what can we realistically fit on a 1.5&amp;quot; button?&lt;/h3&gt;
-&lt;p&gt;The cool and challenging thing about designing the BoF buttons was the size restriction. In a 1.5&amp;quot; button, we wanted to create designs that:&lt;/p&gt;
+&lt;h3&gt;Well, what can we realistically fit on a 1.5&#34; button?&lt;/h3&gt;
+&lt;p&gt;The cool and challenging thing about designing the BoF buttons was the size restriction. In a 1.5&#34; button, we wanted to create designs that:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Reflect the group name and/or community&lt;/li&gt;
 &lt;li&gt;Include at least one bird&lt;/li&gt;
@@ -40,7 +82,7 @@ Birds of a Feather banner for RStudio::conf(2020)!
 &lt;li&gt;Add some readable text&lt;/li&gt;
 &lt;li&gt;Oh also, all while setting an approachable tone.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;It turns out the answer to “What can you fit on a 1.5” button?&amp;quot; is…actually quite a lot. Here are a few of the designs:&lt;/p&gt;
+&lt;p&gt;It turns out the answer to “What can you fit on a 1.5” button?&#34; is…actually quite a lot. Here are a few of the designs:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;data-science-team-leaders&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Data science team leaders&lt;/h3&gt;

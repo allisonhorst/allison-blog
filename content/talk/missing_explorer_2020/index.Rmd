@@ -32,11 +32,3 @@ title: How to Become a Missing Explorer (talk)
 # url_slides: ""
 # url_video: ""
 ---
-
-### Slides: 
-
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQRXYzpq9lrAnBpl_xGoVFXpJicn8eBqEzowMUPgB8XOj4UCvYaGFN6R_jMz56UIdL9zAEdiraDU3ph/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-### Accompanying tutorial: 
-
-https://allisonhorst.shinyapps.io/missingexplorer/

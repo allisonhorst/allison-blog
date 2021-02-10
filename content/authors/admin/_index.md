@@ -25,7 +25,7 @@ name: Allison Horst
 organizations:
 - name: Bren School of Environmental Science and Management
   url: "http://bren.ucsb.edu/"
-role: Lecturer
+role: Assistant Teaching Professor
 social:
 - icon: envelope
   icon_pack: fas
@@ -42,4 +42,4 @@ user_groups:
 - Visitors
 ---
 
-Hi everyone, I'm Allison! I'm a continuing lecturer at the Bren School of Environmental Science and Management at UC Santa Barbara, where I teach statistics, data analysis, and science communication. I'm also the current RStudio Artist-in-Residence, and you can find some of my R- and stats-related artwork [here](https://github.com/allisonhorst/stats-illustrations).
+Hi everyone, I'm Allison! I'm an Assistant Teaching Professor at the Bren School of Environmental Science and Management at UC Santa Barbara, where I teach statistics, data analysis, and science communication. I was also RStudio's 2019-2020 Artist-in-Residence, and you can find some of my R- and stats-related artwork [here](https://github.com/allisonhorst/stats-illustrations).

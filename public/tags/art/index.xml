@@ -5,7 +5,7 @@
     <link>/tags/art/</link>
       <atom:link href="/tags/art/index.xml" rel="self" type="application/rss+xml" />
     <description>art</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 15 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 29 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>art</title>
@@ -13,53 +13,12 @@
     </image>
     
     <item>
-      <title>The story of this drawing</title>
-      <link>/post/2020-03-15-r-twitter-illustration-story/</link>
-      <pubDate>Sun, 15 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/post/2020-03-15-r-twitter-illustration-story/</guid>
-      <description>
-
-
-&lt;div id=&#34;walking-through-the-door&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Walking through the door&lt;/h3&gt;
-&lt;p&gt;I am always happy to see this illustration used to represent of the welcoming and encouraging #rstats community on twitter. When I drew it, my view was much smaller: I wanted to visualize how Dr. Julie Lowndes (Twitter: &lt;a href=&#34;https://twitter.com/juliesquid&#34;&gt;@juliesquid&lt;/a&gt;, website: &lt;a href=&#34;https://jules32.github.io/&#34; class=&#34;uri&#34;&gt;https://jules32.github.io/&lt;/a&gt;) had gently encouraged me to join twitter for the R community, and the amazement I felt upon opening the door. I was late to the party - finally dipping my toes into the #rstats twitter water in 2018. Two years later, it’s now my go-to place for:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Staying up-to-date on what’s new in R&lt;/li&gt;
-&lt;li&gt;Meeting and communicating with new friends and collaborators&lt;/li&gt;
-&lt;li&gt;Learning new ideas and approaches for teaching stats and data science&lt;/li&gt;
-&lt;li&gt;Sharing my course materials and artwork&lt;/li&gt;
-&lt;li&gt;Listening to, and learning from, a diverse range of voices in R/data science/environmental science&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The rumors are true, people. It’s &lt;strong&gt;the&lt;/strong&gt; place to be if you’re learning, using, or teaching R.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;r-is-better-together&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;R is better together&lt;/h3&gt;
-&lt;p&gt;I’ve been teaching stats &amp;amp; data analysis in R at the &lt;a href=&#34;http://bren.ucsb.edu/&#34;&gt;Bren School of Environmental Science and Management&lt;/a&gt; since 2012. But &lt;em&gt;using and teaching R&lt;/em&gt; is very different from being a &lt;em&gt;happy R user and teacher&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Frankly, I was a lonely R user flailing around without a home base, and I didn’t even realize how much of a bummer that was.&lt;/p&gt;
-&lt;p&gt;In 2017, Julie serendipitously moved in to a cabin just one short down the road from me. Do you know what happens when you finally get to hang out with someone who loves using and teaching R as much as you do? &lt;strong&gt;You hang out all the time and never shut up about it.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;It’s obnoxious.&lt;/p&gt;
-&lt;p&gt;We talk about using R on every hike.&lt;/p&gt;
-&lt;p&gt;We talk about teaching R over bonfires.&lt;/p&gt;
-&lt;p&gt;We talk about building inclusive R communities while romping with our dogs, Teddy and Khora, in the riverbed.&lt;/p&gt;
-&lt;p&gt;We talk about R frustrations while eating pizza.&lt;/p&gt;
-&lt;p&gt;We talk about R at SB R-Ladies (&lt;a href=&#34;https://twitter.com/RLadiesSB&#34; class=&#34;uri&#34;&gt;https://twitter.com/RLadiesSB&lt;/a&gt;), UCSB TidyTuesdays, and &lt;a href=&#34;https://eco-data-science.github.io/&#34;&gt;Eco-Data-Science&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;It’s so obnoxious.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;joining-twitter-for-r-stats&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Joining twitter for R stats&lt;/h3&gt;
-&lt;/div&gt;
-&lt;div id=&#34;using-twitter-for-r&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Using twitter for R&lt;/h3&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Birds of a feather, drawn together</title>
       <link>/post/bof-artwork/</link>
       <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/post/bof-artwork/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;em&gt;By Allison Horst, Curtis Kephart, and Yanina Bellini&lt;/em&gt;&lt;/p&gt;
@@ -173,6 +132,7 @@ Birds of a Feather banner for RStudio::conf(2020)!
       <pubDate>Tue, 18 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/post/r-for-excel/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;blockquote&gt;
@@ -259,6 +219,7 @@ photo by Brunel Johnson with art by Allison Horst
       <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
       <guid>/post/2019-11-19-rstudio-artist-in-residence/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Since I started drawing R- and stats-related illustrations for my students in 2018, I have been overwhelmed by the reception from the #rstats community on twitter.&lt;/p&gt;

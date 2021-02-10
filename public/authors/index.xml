@@ -5,45 +5,12 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 20 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 19 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Authors</title>
       <link>/authors/</link>
     </image>
-    
-    <item>
-      <title>Allison Horst and Julia Lowndes</title>
-      <link>/authors/allison-horst-and-julia-lowndes/</link>
-      <pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/authors/allison-horst-and-julia-lowndes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Allison Horst</title>
-      <link>/authors/allison-horst/</link>
-      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/allison-horst/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/authors/admin/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/admin/</guid>
-      <description>&lt;p&gt;Hi everyone, I&#39;m Allison! I&#39;m a continuing lecturer at the Bren School of Environmental Science and Management at UC Santa Barbara, where I teach statistics, data analysis, and science communication. I&#39;m also the current RStudio Artist-in-Residence, and you can find some of my R- and stats-related artwork &lt;a href=&#34;https://github.com/allisonhorst/stats-illustrations&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Robert Ford</title>
-      <link>/authors/robert-ford/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>/authors/robert-ford/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>

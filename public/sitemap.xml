@@ -113,6 +113,21 @@
   </url>
   
   <url>
+    <loc>/categories/collaboration/</loc>
+    <lastmod>2020-10-12T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/tidy-data/</loc>
+    <lastmod>2020-10-12T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-10-12-tidydata-openscapes/</loc>
+    <lastmod>2020-10-12T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020-08-01-palmerpenguins-on-cran/</loc>
     <lastmod>2020-03-01T00:02:33-08:00</lastmod>
   </url>

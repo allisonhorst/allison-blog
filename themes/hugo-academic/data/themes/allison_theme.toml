@@ -8,11 +8,11 @@ light = true
 primary = "#34282C"
 
 # Menu
-menu_primary = "#ffffff" # 500
+menu_primary = "#FFE8EB" # 500
 menu_text = "#4f374f"
 menu_text_active = "#a48393" # A100
 menu_title = "#34282C"
 
 # Home sections
-home_section_odd = "#eeeeee"
+home_section_odd = "#FFF0F1"
 home_section_even = "#ffffff"

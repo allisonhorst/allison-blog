@@ -9,9 +9,14 @@
 #   weight = 10
 
 [[main]]
+   name = "Talks and Workshops"
+   url = "talk/"
+   weight = 20
+
+[[main]]
   name = "Posts"
   url = "#posts"
-  weight = 20
+  weight = 40
 
 # [[main]]
 #   name = "Projects"
@@ -22,11 +27,6 @@
 #   name = "Publications"
 #   url = "#featured"
 #   weight = 40
-
-[[main]]
-   name = "Talks and Workshops"
-   url = "talk/"
-   weight = 40
 
 #  [[main]]
 #   name = "Courses"

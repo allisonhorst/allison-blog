@@ -5,13 +5,13 @@ name = "allison_theme"
 light = true
 
 # Primary
-primary = "#9c00c6"
+primary = "#34282C"
 
 # Menu
 menu_primary = "#ffffff" # 500
-menu_text = "#00b19c"
-menu_text_active = "#f300ff" # A100
-menu_title = "#9c00c6"
+menu_text = "#4f374f"
+menu_text_active = "#a48393" # A100
+menu_title = "#34282C"
 
 # Home sections
 home_section_odd = "#eeeeee"

@@ -7650,7 +7650,7 @@ div.alert a {
  **************************************************/
 .navbar {
   height: 70px;
-  background: #ffffff;
+  background: #FFE8EB;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.11);
   font-size: 13.86px;
   position: fixed;
@@ -7755,7 +7755,7 @@ div.alert a {
     left: 0;
     top: 50px;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #FFE8EB;
     text-align: center !important; }
   #navbar-main .main-menu-item .nav-item {
     padding: 10px 15px !important; }
@@ -7779,12 +7779,12 @@ ul.nav-icons li.nav-item a.nav-link {
   padding: 0; }
 
 .dropdown-menu {
-  background-color: #ffffff !important;
+  background-color: #FFE8EB !important;
   color: #4f374f !important;
   z-index: 1032; }
 
 .dropdown-item {
-  background-color: #ffffff !important;
+  background-color: #FFE8EB !important;
   color: #4f374f !important; }
 
 /*************************************************
@@ -8339,7 +8339,7 @@ ul.share li:hover i {
     opacity: 1; } }
 
 .home-section {
-  background-color: #eeeeee;
+  background-color: #FFFFFF;
   padding: 110px 0 110px 0;
   animation: intro 0.3s both;
   animation-delay: 0.15s; }
@@ -8392,7 +8392,7 @@ ul.share li:hover i {
   padding-top: 50px; }
 
 .home-section:nth-of-type(even) {
-  background-color: #ffffff; }
+  background-color: #FFF0F1; }
 
 .dark .home-section {
   background-color: #272935; }

@@ -5,7 +5,7 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Allison Horst</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 09 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 31 Mar 2021 00:00:00 -0700</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Allison Horst</title>
@@ -51,6 +51,122 @@
 &lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
 &lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
 &lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Merge conflicts: helping data science students merge their advanced skills into existing teams</title>
+      <link>/post/2021-03-31-joining-teams/</link>
+      <pubDate>Wed, 31 Mar 2021 00:00:00 -0700</pubDate>
+      <guid>/post/2021-03-31-joining-teams/</guid>
+      <description>
+&lt;script src=&#34;/post/2021-03-31-joining-teams/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;This post was written collaboratively by &lt;a href=&#34;https://jnolis.com/&#34;&gt;&lt;strong&gt;Jacqueline Nolis&lt;/strong&gt;&lt;/a&gt; and me. Original data science language icons artwork (above) by Jacqueline Nolis.&lt;/p&gt;
+&lt;p&gt;Students in data science programs build advanced skills in popular programming languages (e.g. Python, R, SQL, etc), platforms (e.g. RStudio, Jupyter Notebooks) and workflows (e.g. using version control with git). Entering the workplace, however, data science program graduates will often join teams further from the leading edge of data science tools and approaches. Having a junior employee with more sophisticated technical skills than the senior members can cause complications for both the junior employee and the team as a whole. We believe preparing students for merging their advanced skills into existing teams needs to be included in data science degree programs.&lt;/p&gt;
+&lt;div id=&#34;hello-world-work.&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;“Hello, &lt;del&gt;world&lt;/del&gt; work.”&lt;/h3&gt;
+&lt;p&gt;Data science programs often bake coding agility into their teaching curriculum by teaching and using different languages and platforms in different courses, for example how the UBC Master of Data Science program thoughtfully &lt;a href=&#34;https://ubc-mds.github.io/2020-02-03-teach-python-and-r/&#34;&gt;integrates R and Python&lt;/a&gt;. Students also learn workflows and tools for reproducible, collaborative, cloud-based data science, putting them at the forefront of modern data science skills. Those same advanced skills that get a graduate a job, however, can cause conflict if not thoughtfully integrated into existing team practices. You can imagine if a program spends several years training a student in Python, and the team is entirely using Microsoft Access there is going to be a shock for all parties involved.&lt;/p&gt;
+&lt;p&gt;If the goal of data science programs is to prepare students for their careers, that should also include efforts to: (1) understand - and realistically consider - the landscapes that graduates will be entering (re: tools, conventions, etc. where our grads are applying for and getting jobs), and (2) explicitly teach strategies to integrate advanced skills into teams.&lt;/p&gt;
+&lt;p&gt;For example, how can/should a graduate adapt from a git/GitHub workflow into a team that uses a shared folder to manage and share files? How can/should a graduate writing reproducible code in R or Python integrate into a collaborative project existing in Google Sheets or Excel? How can/should a graduate trained in cloud computing work with and benefit a team with colleagues that work entirely locally?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;wait-does-that-actually-happen&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Wait, does that actually happen?&lt;/h3&gt;
+&lt;p&gt;Yep.&lt;/p&gt;
+&lt;p&gt;Data science grads are unlikely to join data science teams working with identical data science tools, workflows and mindsets they learned in their curriculum. The difference may be a crack or a chasm - depending on both the graduate and the team they’re joining - but some dissonance should be expected.&lt;/p&gt;
+&lt;p&gt;The gap may be widest for data science graduates joining science teams with field specific expertise, but without formal data science training. For example, some of our Master of Environmental Science and Management graduates, who have built substantial data science skills in R, ArcGIS / QGIS, git, GitHub, bash, and more, will join environmental consulting firms, non-profits, and NGOs that are primarily working - and doing genuinely great work - in Excel or Google Sheets.&lt;/p&gt;
+&lt;p&gt;So, how do we train our graduates for that scenario?&lt;/p&gt;
+&lt;figure&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;
+Allison sidebar
+&lt;/h3&gt;
+&lt;p style=&#34;font-style: italic;&#34;&gt;
+Hi all, I&#39;m looking for resources to help grads from DS programs (e.g. working in R/Py/SQL) integrate into teams using Excel. Like a “Good enough practices” paper w/ strategies to join &amp;amp; support an Excel-based team? Thanks for suggestions! &lt;a href=&#34;https://twitter.com/CMastication?ref_src=twsrc%5Etfw&#34;&gt;&lt;span class=&#34;citation&#34;&gt;@CMastication&lt;/span&gt;&lt;/a&gt; &lt;a href=&#34;https://twitter.com/robinson_es?ref_src=twsrc%5Etfw&#34;&gt;&lt;span class=&#34;citation&#34;&gt;@robinson_es&lt;/span&gt;&lt;/a&gt; &lt;a href=&#34;https://twitter.com/skyetetra?ref_src=twsrc%5Etfw&#34;&gt;&lt;span class=&#34;citation&#34;&gt;@skyetetra&lt;/span&gt;&lt;/a&gt; &lt;a href=&#34;https://t.co/WPMhzWU2wc&#34;&gt;pic.twitter.com/WPMhzWU2wc&lt;/a&gt;
+&lt;/p&gt;
+— Allison Horst (&lt;span class=&#34;citation&#34;&gt;@allison_horst&lt;/span&gt;) &lt;a href=&#34;https://twitter.com/allison_horst/status/1366815218261626880?ref_src=twsrc%5Etfw&#34;&gt;March 2, 2021&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Recently I tried to crowdsource resources for this problem on twitter. Two things stood out about the responses:
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+Despite wide reach (&amp;gt;48,000 impressions and 31 retweets - including by influential software developers and data science educators), there were only &lt;strong&gt;six&lt;/strong&gt; responses with actual suggestions
+&lt;/li&gt;
+&lt;li&gt;
+Of those six suggestions, five were to suggest tools and/or packages to work between languages and/or platforms (e.g. &lt;a href=&#34;https://ycphs.github.io/openxlsx/&#34;&gt;openxlsx&lt;/a&gt;, &lt;a href=&#34;https://googlesheets4.tidyverse.org/&#34;&gt;googlesheets4&lt;/a&gt;, &lt;a href=&#34;https://powerbi.microsoft.com/&#34;&gt;Power BI&lt;/a&gt;, &lt;a href=&#34;https://www.xlwings.org/&#34;&gt;xlwings&lt;/a&gt;).
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p class=&#34;mb-0&#34;&gt;
+I haven’t systematically reviewed data science programs or literature for how these skills are included, but based on these responses my sense is the following: Resources to help data science program graduates integrate their advanced skills into existing teams are sparse, and the focus is often on tools to interface between tools, rather than professional and interpersonal strategies to join a team._
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/figure&gt;
+&lt;p&gt;Teaching tools to nimbly move between languages and platforms is important. For example, R packages like &lt;a href=&#34;https://ycphs.github.io/openxlsx/&#34;&gt;openxlsx&lt;/a&gt; and &lt;a href=&#34;https://googlesheets4.tidyverse.org/&#34;&gt;googlesheets4&lt;/a&gt; provide concrete paths forward for collaboration between team members split between coding in R and working in spreadsheets. However, at some level these aren’t problems with tools so much as problems with conflicting human interests. Even if a programming language package effectively interfaces with a different tool, you still have to convince a team of people to use that interface. We believe there are two common scenarios that unfold due to the human nature of this problem, which we’ll describe next.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;okwell-what-are-students-doing-now-without-that-training&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;OK…well what are students doing &lt;em&gt;now&lt;/em&gt; without that training?&lt;/h3&gt;
+&lt;p&gt;There are two common scenarios that often occur when a student is trained in skills that are more advanced than required for their first job out of school. In one scenario the student doesn’t use the skills they were trained in, and adapts to the role. In the other scenario the student tries to get the change organization to use the skills the student was trained. For the canonical example of a student trained in R/Python/SQL joining a team that exclusively uses Excel, either the student will switch to purely using Excel themselves or try and teach the organization to use some R, Python, or SQL.&lt;/p&gt;
+&lt;p&gt;In the scenario where the recent graduate chooses to adapt to the existing technology of the team, this harms both the recent graduate and the team itself. The graduate is harmed because without the ability to practice the skills they learned in school those skills will likely atrophy. For example, git is a fairly complex skill to learn with a lot of nuanced components (like the difference between committing and staging). If a former student doesn’t continuously use those skills, it will be much harder to relearn them later. Further, jobs that require more advanced skills like git are often desirable to data scientists, and having years of only using Excel will make it harder to interview for and obtain such a job in the future.&lt;/p&gt;
+&lt;p&gt;Meanwhile, if a recent data science graduate backslides entirely into tools that a company is using that company is missing out on a valuable vector to advance their data science tools and workflows. It’s very common for teams to get stuck using outdated technology because that’s what people on the team are used to, and at a certain point a critical mass is reached where because so many people on the team are unwilling (or unable) to change, it becomes impossible to do so. New graduates with data science skills are a great way to avoid data science stagnancy. They can introduce new ideas and skills into an organization since they have been recently trained on the skills and have a fresh perspective. As an extreme example, if you have a team where everyone still uses FORTRAN because that’s what they are used to, it would be unfortunate to hire a person who understands Python (and could help bridge the team to a more modern technology stack) and encourage them forget Python and learn FORTRAN.&lt;/p&gt;
+&lt;p&gt;In the other scenario, where a former student tries to move the organization towards the newer technologies themselves, an immense amount of chaos can inadvertently be created. These sorts of situations generally arise when the former student thinks they have a better way to do something than the existing methods. For example, maybe an organization has critical data stored on a single Microsoft Access database under someone’s desk. The student might (correctly) point out that this is dangerous, and suggest migrating the data to a cheap cloud database. A change like this might sound straightforward, but &lt;em&gt;a lot&lt;/em&gt; of work has to be done in shifting to a new technology, including carefully considering questions like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Who on the team has the skill set to use this?&lt;/li&gt;
+&lt;li&gt;How will it be maintained if the creator leaves the team?&lt;/li&gt;
+&lt;li&gt;How does this align with the technology choices of other parts of the organization?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Are all critically important to the team’s implementation and enduring success with a new technology. Meanwhile, people who only recently entered the working world have the least perspective on these challenging questions. In practice what often happens is the new hire disregards those challenges, and instead implements what they learned in school without enough consideration for how it will be adopted, used and maintained by coworkers. Replacing a bad but well-understood technology with new technology that few can maintain can be far worse than the original bad technology decisions. A team may be left with something that is now more complicated for them to use and maintain, and no one who knows how to do it. A functioning system needs a robust set of measures in case of failures, and a single recent graduate new to the field cannot provide that on their own.&lt;/p&gt;
+&lt;figure&gt;
+&lt;blockquote&gt;
+&lt;p style=&#34;font-size:18px; font-style: italic;&#34;&gt;
+Replacing a bad but well-understood technology with new technology that few can maintain can be far worse than the original bad technology decisions.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/figure&gt;
+&lt;p&gt;A former student trying to get a new technology adopted in an organization may also run into communication issues and conflicts when trying to make change in the organization. If the organization doesn’t see the value in the new technologies (why use git when SharePoint is fine?) people may become frustrated that the new hire is bringing them up. When you join a new organization, especially having only recently become a data scientist, you rarely have much political capital, and it’s very easy to spend that capital in places that ultimately don’t prove useful. So this scenario where the recent hire tries to get a new technology adopted can leave a person frustrated and without tools to move forward in an organization.&lt;/p&gt;
+&lt;figure&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;
+Jacqueline sidebar
+&lt;/h3&gt;
+&lt;p style=&#34;font-style:italic;&#34;&gt;
+Going into industry, I absolutely fell into the second scenario at multiple companies. Repeatedly I would introduce a technology that the rest of the team wasn’t familiar with, like using MATLAB while everyone else used SAS or R when people used Excel. I had valid reasons for believing why the technology I was introducing was better, but I failed to account for the reality that I would be the only one who used them. Anytime something broke I would have to be the one who fixed it and it was hard for my teammates to champion the work I did. In almost every situation I eventually ended up redoing my work in the tool the team used. Now that I am substantially more senior I am able to transition teams to newer technologies, but it takes a much deeper understanding of how organizations operate, and the fact that I have senior positions to influence from, to bring the change.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/figure&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-we-need-to-incorporate-this-into-data-science-programs&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;What we need to incorporate this into data science programs&lt;/h3&gt;
+&lt;p&gt;To reduce the potential conflicts we’ve described, preparing students in strategies and mindsets to merge their skills into existing teams should be part of data science programs. Teachers familiar with tools used in academia, however, may not have their finger on the current pulse of how data science is done in other sectors (industry, government, NGOs, non-profits, etc.). One effective way to keep knowledge flowing to academia and students is for faculty to help bridge more connections between industry and academia.&lt;/p&gt;
+&lt;p&gt;Teachers in data science degree programs should familiarize themselves with the current landscape of data science tools and systems used by the types of teams they expect their students to join. That might include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Engaging with industry / non-academic partners about how they work with data&lt;/li&gt;
+&lt;li&gt;Searching for and synthesizing skills in data science job postings&lt;/li&gt;
+&lt;li&gt;Communicating with program alumni about how they are working post-graduation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This will likely require teachers to step out of their comfort zone and communicate with people they don’t normally talk to. But even one connection between an academic and a person working in industry can vastly improve how much the academic understands about industry.&lt;/p&gt;
+&lt;p&gt;Teachers should also facilitate opportunities for students to work with and/or learn from non-academics in similar positions or workplaces, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Course projects, capstone &amp;amp; thesis projects that require students to integrate their skills into existing team workflows&lt;/li&gt;
+&lt;li&gt;Data science summer internships and part time jobs&lt;/li&gt;
+&lt;li&gt;Workshops, case studies, guest speakers, etc. to build skills on the human side of working with teams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These sorts of opportunities are great for students–not only do they give students a better understanding of what industry is like, but they also make students much more appealing on the job market. If teachers have industry connections then they can be used to help connect students too. Academic organizations are also starting to recognize how important these connections can be. One great example is &lt;a href=&#34;https://www.maa.org/programs-and-communities/professional-development/pic-math&#34;&gt;PIC Math&lt;/a&gt; (run by the Mathematical Association of America) which helps professors start learning how to start working with industrial sponsors and provides ways for students to do industry projects.&lt;/p&gt;
+&lt;p&gt;While connecting better with industry will help solve this problem, it’s certainly not the only method that could prove useful. This problem of overly equipped students is a common enough occurrence that academics and students should be well aware of it and as a field we should strive to make progress on it in the years ahead.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R-Ladies &amp; R-Ladies Dammam Workshop: A Quick Flight to the Edge of the Tidyverse</title>
+      <link>/talk/rladies_tunis_saudiarabia_tidyverse_intro/</link>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/rladies_tunis_saudiarabia_tidyverse_intro/</guid>
+      <description>
+&lt;script src=&#34;/talk/rladies_tunis_saudiarabia_tidyverse_intro/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
 </description>
     </item>
     

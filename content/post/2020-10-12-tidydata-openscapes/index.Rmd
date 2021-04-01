@@ -1,7 +1,7 @@
 ---
 title: Tidy data for reproducibility, efficiency, and collaboration (originally published on the Openscapes blog)
 author: Allison Horst and Julia Lowndes
-date: '2020-10-12'
+date: 2021-10-12T00:00:00-07:00
 slug: []
 categories:
   - data science

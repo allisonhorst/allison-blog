@@ -9121,3 +9121,6 @@ div.mermaid {
   width: 100%;
   text-align: center;
   margin-bottom: 1rem; }
+
+a {
+  color: #af6f91; }

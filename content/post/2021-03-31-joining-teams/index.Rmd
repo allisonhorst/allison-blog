@@ -59,11 +59,11 @@ In the other scenario, where a former student tries to move the organization tow
 -   How will it be maintained if the creator leaves the team?
 -   How does this align with the technology choices of other parts of the organization?
 
-Are all critically important to the team's implementation and enduring success with a new technology. Meanwhile, people who only recently entered the working world have the least perspective on these challenging questions. In practice what often happens is the new hire disregards those challenges, and instead implements what they learned in school without enough consideration for how it will be adopted, used and maintained by coworkers. Replacing a bad but well-understood technology with new technology that few can maintain can be far worse than the original bad technology decisions. A team may be left with something that is now more complicated for them to use and maintain, and no one who knows how to do it. A functioning system needs a robust set of measures in case of failures, and a single recent graduate new to the field cannot provide that on their own.
+Are all critically important to the team's implementation and enduring success with a new technology. Meanwhile, people who only recently entered the working world have the least perspective on these challenging questions. In practice what often happens is the new hire disregards those challenges, and instead implements what they learned in school without enough consideration for how it will be adopted, used and maintained by coworkers. Replacing dated but well-understood technology with new technology that few can maintain can be far worse than the original dated technology decisions. A team may be left with something that is now more complicated for them to use and maintain, and no one who knows how to do it. A functioning system needs a robust set of measures in case of failures, and a single recent graduate new to the field cannot provide that on their own.
 
 <figure>
     <blockquote >
-        <p style="font-size:18px; font-style: italic;">Replacing a bad but well-understood technology with new technology that few can maintain can be far worse than the original bad technology decisions.</p>
+        <p style="font-size:18px; font-style: italic;">Replacing dated but well-understood technology with new technology that few can maintain can be far worse than the original dated technology decisions.</p>
     </blockquote>
 </figure>
 

@@ -5,12 +5,26 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 31 Mar 2021 00:00:00 -0700</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:square]</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Learning GitHub Classroom</title>
+      <link>/post/2021-09-02-learning-github-classroom/</link>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/post/2021-09-02-learning-github-classroom/</guid>
+      <description>
+&lt;script src=&#34;/post/2021-09-02-learning-github-classroom/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Recently, a small group of us at the Bren School affiliated with our new Master of Environmental Data Science program decided to learn GitHub Classroom together.
+We wrote about our experience and takeaways for the Academic Data Science Alliance Community Blog. Ready it &lt;a href=&#34;https://academicdatascience.org/resources/2021-08-10-blog&#34;&gt;here&lt;/a&gt;!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Merge conflicts: helping data science students merge their advanced skills into existing teams</title>

@@ -42,4 +42,4 @@ user_groups:
 - Visitors
 ---
 
-Hi everyone, I'm Allison! I'm an Assistant Teaching Professor at the Bren School of Environmental Science and Management at UC Santa Barbara, where I teach statistics, data analysis, and science communication. I was also RStudio's 2019-2020 Artist-in-Residence, and you can find some of my R- and stats-related artwork [**here**](https://github.com/allisonhorst/stats-illustrations).
+Hi everyone, I'm Allison! I'm an Assistant Teaching Professor at the Bren School of Environmental Science and Management at UC Santa Barbara, where I teach environmental data science courses and work with students to build responsible tools and understanding to investigate environmental challenges using good practices for reproducible, collaborative data science. I was also RStudio's 2019-2020 Artist-in-Residence, and you can find some of my R- and stats-related artwork [**here**](https://github.com/allisonhorst/stats-illustrations).

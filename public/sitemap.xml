@@ -19,16 +19,31 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2021-03-31T00:00:00-07:00</lastmod>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2021-03-31-joining-teams/</loc>
-    <lastmod>2021-03-31T00:00:00-07:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/github/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2021-09-02-learning-github-classroom/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2021-03-31-joining-teams/</loc>
     <lastmod>2021-03-31T00:00:00-07:00</lastmod>
   </url>
   
@@ -55,11 +70,6 @@
   <url>
     <loc>/talk/ucsb_qmss_rmarkdown_workshop/</loc>
     <lastmod>2021-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2021-02-09T00:02:33-08:00</lastmod>
   </url>
   
   <url>

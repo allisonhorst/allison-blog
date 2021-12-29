@@ -2,10 +2,10 @@
 name = "allison_font"
 
 # Optional Google font URL
-google_fonts = "Muli:400,700|Roboto:400,700|Roboto:400,400italic,700|Roboto+Mono"
+google_fonts = "Muli:400,700|Roboto:400,700|Roboto:400,400italic,700|Roboto+Mono|Overlock"
 
 # Font families
-heading_font = "Muli"
+heading_font = "Overlock"
 body_font = "Muli"
-nav_font = "Muli"
+nav_font = "Overlock"
 mono_font = "Roboto Mono"

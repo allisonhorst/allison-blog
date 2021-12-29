@@ -3233,12 +3233,12 @@ input[type="button"].btn-block {
     display: none; }
 
 .navbar-light .navbar-brand {
-  color: #41544e; }
+  color: #FFFFFF; }
   .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-    color: #5b736b; }
+    color: #FFFFFF; }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #41544e; }
+  color: #FFFFFF; }
   .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
     color: rgba(0, 0, 0, 0.7); }
   .navbar-light .navbar-nav .nav-link.disabled {
@@ -3248,21 +3248,21 @@ input[type="button"].btn-block {
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
-  color: #5b736b; }
+  color: #FFFFFF; }
 
 .navbar-light .navbar-toggler {
-  color: #41544e;
+  color: #FFFFFF;
   border-color: transparent; }
 
 .navbar-light .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%2341544e' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
 .navbar-light .navbar-text {
-  color: #41544e; }
+  color: #FFFFFF; }
   .navbar-light .navbar-text a {
-    color: #5b736b; }
+    color: #FFFFFF; }
     .navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
-      color: #5b736b; }
+      color: #FFFFFF; }
 
 .navbar-dark .navbar-brand {
   color: #fff; }
@@ -7208,7 +7208,7 @@ ul.task-list li input[type="checkbox"] {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: Muli, sans-serif;
+  font-family: Reenie Beanie, sans-serif;
   font-weight: 400;
   margin-top: 1rem;
   margin-bottom: .5rem;
@@ -7650,7 +7650,7 @@ div.alert a {
  **************************************************/
 .navbar {
   height: 70px;
-  background: #e8fffa;
+  background: #6c6a40;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.11);
   font-size: 13.86px;
   position: fixed;
@@ -7674,18 +7674,18 @@ div.alert a {
   .navbar .navbar-nav {
     display: flex; }
     .navbar .navbar-nav .nav-link {
-      color: rgba(65, 84, 78, 0.85); }
+      color: rgba(255, 255, 255, 0.85); }
       .navbar .navbar-nav .nav-link.active, .navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link:focus {
-        color: #41544e; }
+        color: #FFFFFF; }
       .navbar .navbar-nav .nav-link.active {
         font-weight: bold !important;
-        color: #5b736b !important; }
+        color: #FFFFFF !important; }
   .navbar .dropdown-menu {
     font-size: 13.86px; }
   .navbar .dropdown-item.active,
   .navbar .i18n-active {
     font-weight: bold;
-    color: #5b736b !important; }
+    color: #FFFFFF !important; }
 
 .dark .navbar {
   box-shadow: 0 0.125rem 0.25rem 0 rgba(255, 255, 255, 0.11); }
@@ -7733,7 +7733,7 @@ div.alert a {
   max-width: fit-content; }
 
 #navbar-main .main-menu-item ul li .nav-link {
-  color: #41544e; }
+  color: #FFFFFF; }
 
 @media (max-width: 991.98px) {
   .navbar-brand-mobile-wrapper {
@@ -7755,7 +7755,7 @@ div.alert a {
     left: 0;
     top: 50px;
     width: 100%;
-    background-color: #e8fffa;
+    background-color: #6c6a40;
     text-align: center !important; }
   #navbar-main .main-menu-item .nav-item {
     padding: 10px 15px !important; }
@@ -7779,13 +7779,13 @@ ul.nav-icons li.nav-item a.nav-link {
   padding: 0; }
 
 .dropdown-menu {
-  background-color: #e8fffa !important;
-  color: #41544e !important;
+  background-color: #6c6a40 !important;
+  color: #FFFFFF !important;
   z-index: 1032; }
 
 .dropdown-item {
-  background-color: #e8fffa !important;
-  color: #41544e !important; }
+  background-color: #6c6a40 !important;
+  color: #FFFFFF !important; }
 
 /*************************************************
  *  Card component
@@ -8392,7 +8392,7 @@ ul.share li:hover i {
   padding-top: 50px; }
 
 .home-section:nth-of-type(even) {
-  background-color: #f5fff9; }
+  background-color: FFFFFF; }
 
 .dark .home-section {
   background-color: #272935; }

@@ -5,7 +5,7 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Allison Horst</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 03 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:square]</url>
       <title>Allison Horst</title>
@@ -55,6 +55,45 @@
     </item>
     
     <item>
+      <title>Introducing UCSB&#39;s New Master of Environmental Data Science Program</title>
+      <link>/talk/ucsb_ds_summit_2021/</link>
+      <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/ucsb_ds_summit_2021/</guid>
+      <description>
+&lt;script src=&#34;/talk/ucsb_ds_summit_2021/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Tips &amp; tools for gentle R introductions</title>
+      <link>/talk/qmss_seminar_teachingr_2021/</link>
+      <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/qmss_seminar_teachingr_2021/</guid>
+      <description>
+&lt;script src=&#34;/talk/qmss_seminar_teachingr_2021/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Tidy data for reproducibility, efficiency, and collaboration (originally published on the Openscapes blog)</title>
+      <link>/post/2020-10-12-tidydata-openscapes/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 -0700</pubDate>
+      <guid>/post/2020-10-12-tidydata-openscapes/</guid>
+      <description>
+&lt;script src=&#34;/post/2020-10-12-tidydata-openscapes/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;https://jules32.github.io/&#34;&gt;Dr. Julia Lowndes&lt;/a&gt; spearheaded a collaboration to create a visual explanation of how working with tidy data can make data science more efficient, reproducible, and collaborative!&lt;/p&gt;
+&lt;p&gt;Check out our blog post, including original illustrations, &lt;a href=&#34;https://www.openscapes.org/blog/2020/10/12/tidy-data/&#34;&gt;HERE&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Make friends with tidy data!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Learning GitHub Classroom</title>
       <link>/post/2021-09-02-learning-github-classroom/</link>
       <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
@@ -65,6 +104,66 @@
 
 &lt;p&gt;Recently, a small group of us at the Bren School affiliated with our new Master of Environmental Data Science program decided to learn GitHub Classroom together.
 We wrote about our experience and takeaways for the Academic Data Science Alliance Community Blog. Ready it &lt;a href=&#34;https://academicdatascience.org/resources/2021-08-10-blog&#34;&gt;here&lt;/a&gt;!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creative Contributions and Activities for Student Engagement and Learning in Data Science Education</title>
+      <link>/talk/jsm_2021/</link>
+      <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/jsm_2021/</guid>
+      <description>
+&lt;script src=&#34;/talk/jsm_2021/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Leveraging data richness of the Long Term Ecological Research Network for an R datasets package</title>
+      <link>/talk/esa_2021/</link>
+      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/esa_2021/</guid>
+      <description>
+&lt;script src=&#34;/talk/esa_2021/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Developing a datasets based R package to teach environmental data science</title>
+      <link>/talk/user_2021/</link>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/user_2021/</guid>
+      <description>
+&lt;script src=&#34;/talk/user_2021/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Creativity to learn, creativity to teach.</title>
+      <link>/talk/dsxd_education_session_2021/</link>
+      <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/dsxd_education_session_2021/</guid>
+      <description>
+&lt;script src=&#34;/talk/dsxd_education_session_2021/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
+      <title>Tired - iris. Wired - penguins.</title>
+      <link>/talk/sb_users_penguins_flash/</link>
+      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>/talk/sb_users_penguins_flash/</guid>
+      <description>
+&lt;script src=&#34;/talk/sb_users_penguins_flash/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
 </description>
     </item>
     

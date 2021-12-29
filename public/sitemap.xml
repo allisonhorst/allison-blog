@@ -19,7 +19,37 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/allison-horst-and-jamie-montgomery/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/ucsb_ds_summit_2021/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/</loc>
+    <lastmod>2021-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/allison-horst/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/qmss_seminar_teachingr_2021/</loc>
+    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -28,48 +58,8 @@
   </url>
   
   <url>
-    <loc>/categories/github/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2021-09-02-learning-github-classroom/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2021-03-31-joining-teams/</loc>
-    <lastmod>2021-03-31T00:00:00-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/allison-horst/</loc>
-    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/</loc>
-    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/rladies_tunis_saudiarabia_tidyverse_intro/</loc>
-    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/</loc>
-    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/ucsb_qmss_rmarkdown_workshop/</loc>
-    <lastmod>2021-02-09T00:00:00+00:00</lastmod>
+    <loc>/categories/collaboration/</loc>
+    <lastmod>2020-10-12T00:02:33-08:00</lastmod>
   </url>
   
   <url>
@@ -88,18 +78,13 @@
   </url>
   
   <url>
-    <loc>/categories/dplyr/</loc>
-    <lastmod>2021-02-09T00:02:33-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/education/</loc>
     <lastmod>2021-02-09T00:02:33-08:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/2021-02-08-dplyr-learnr/</loc>
-    <lastmod>2021-02-09T00:02:33-08:00</lastmod>
+    <loc>/post/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -114,6 +99,96 @@
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2021-02-09T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/tidy-data/</loc>
+    <lastmod>2020-10-12T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020-10-12-tidydata-openscapes/</loc>
+    <lastmod>2020-10-12T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/github/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2021-09-02-learning-github-classroom/</loc>
+    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/jsm_2021/</loc>
+    <lastmod>2021-08-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/julien-brun-and-allison-horst/</loc>
+    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/esa_2021/</loc>
+    <lastmod>2021-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/allison-horst-and-julien-brun/</loc>
+    <lastmod>2021-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/user_2021/</loc>
+    <lastmod>2021-07-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/dsxd_education_session_2021/</loc>
+    <lastmod>2021-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/sara-stoudt/</loc>
+    <lastmod>2021-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/sean-kross/</loc>
+    <lastmod>2021-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/sb_users_penguins_flash/</loc>
+    <lastmod>2021-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2021-03-31-joining-teams/</loc>
+    <lastmod>2021-03-31T00:00:00-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/rladies_tunis_saudiarabia_tidyverse_intro/</loc>
+    <lastmod>2021-02-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/ucsb_qmss_rmarkdown_workshop/</loc>
+    <lastmod>2021-02-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/dplyr/</loc>
+    <lastmod>2021-02-09T00:02:33-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2021-02-08-dplyr-learnr/</loc>
     <lastmod>2021-02-09T00:02:33-08:00</lastmod>
   </url>
   

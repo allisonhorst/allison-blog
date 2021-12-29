@@ -5,12 +5,27 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 12 Oct 2021 00:00:00 -0700</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:square]</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Tidy data for reproducibility, efficiency, and collaboration (originally published on the Openscapes blog)</title>
+      <link>/post/2020-10-12-tidydata-openscapes/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 -0700</pubDate>
+      <guid>/post/2020-10-12-tidydata-openscapes/</guid>
+      <description>
+&lt;script src=&#34;/post/2020-10-12-tidydata-openscapes/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;https://jules32.github.io/&#34;&gt;Dr. Julia Lowndes&lt;/a&gt; spearheaded a collaboration to create a visual explanation of how working with tidy data can make data science more efficient, reproducible, and collaborative!&lt;/p&gt;
+&lt;p&gt;Check out our blog post, including original illustrations, &lt;a href=&#34;https://www.openscapes.org/blog/2020/10/12/tidy-data/&#34;&gt;HERE&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Make friends with tidy data!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Learning GitHub Classroom</title>

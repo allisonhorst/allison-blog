@@ -5,7 +5,7 @@ name = "allison_theme"
 light = true
 
 # Primary
-primary = "#455e58"
+primary = "#222222"
 
 # Menu
 menu_primary = "#730e50"

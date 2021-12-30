@@ -18,20 +18,22 @@
   url = "#posts"
   weight = 40
 
-# [[main]]
-#   name = "Projects"
-#   url = "#projects"
-#   weight = 30
+ [[main]]
+   name = "Educational Resources & Publications"
+   url = "#projects"
+   weight = 60
+
+[[main]]
+   name = "Courses"
+   url = "courses/"
+   weight = 70
 
 # [[main]]
 #   name = "Publications"
 #   url = "#featured"
 #   weight = 40
 
-#  [[main]]
-#   name = "Courses"
-#   url = "courses/"
-#   weight = 50
+
 
 # [[main]]
 #   name = "Contact"
@@ -43,4 +45,4 @@
 [[main]]
    name = "CV"
    url = "files/cv.pdf"
-   weight = 70
+   weight = 80

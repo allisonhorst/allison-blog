@@ -18,15 +18,15 @@
   url = "#posts"
   weight = 40
 
- [[main]]
-   name = "Educational Resources & Publications"
-   url = "#projects"
-   weight = 60
+# [[main]]
+#   name = "Educational Resources"
+#   url = "project/"
+#   weight = 60
 
-[[main]]
-   name = "Courses"
-   url = "courses/"
-   weight = 70
+# [[main]]
+#    name = "Courses"
+#    url = "courses/"
+#    weight = 70
 
 # [[main]]
 #   name = "Publications"

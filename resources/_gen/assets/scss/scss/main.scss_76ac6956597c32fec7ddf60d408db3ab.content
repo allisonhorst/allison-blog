@@ -9127,3 +9127,13 @@ a {
 
 a:hover {
   color: #bd3780; }
+
+.avatar {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  object-fit: cover; }
+
+.home-section {
+  border-bottom: solid 2px;
+  border-color: #f2ecef; }

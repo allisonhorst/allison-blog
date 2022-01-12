@@ -67,6 +67,18 @@
     </item>
     
     <item>
+      <title>R Markdown for fun, functional and reproducible reporting</title>
+      <link>/talk/urban_drainage_2022_rmarkdown_workshop/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/talk/urban_drainage_2022_rmarkdown_workshop/</guid>
+      <description>
+&lt;script src=&#34;/talk/urban_drainage_2022_rmarkdown_workshop/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Introducing UCSB&#39;s New Master of Environmental Data Science Program</title>
       <link>/talk/ucsb_ds_summit_2021/</link>
       <pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate>
@@ -399,7 +411,7 @@ Going into industry, I absolutely fell into the second scenario at multiple comp
       <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
       <guid>/talk/missing_explorer_2020/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/missing_explorer_2020/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -3080,7 +3092,7 @@ Birds of a Feather banner for RStudio::conf(2020)!
       <pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate>
       <guid>/talk/r_for_excel_2020/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/r_for_excel_2020/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -3197,7 +3209,7 @@ photo by Brunel Johnson with art by Allison Horst
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       <guid>/talk/sccwrp_dataviz_2019/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/sccwrp_dataviz_2019/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -3209,7 +3221,7 @@ photo by Brunel Johnson with art by Allison Horst
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       <guid>/talk/rladies_shiny/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/rladies_shiny/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -3221,7 +3233,7 @@ photo by Brunel Johnson with art by Allison Horst
       <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
       <guid>/talk/bren_phd_workshop/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/bren_phd_workshop/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -3233,7 +3245,7 @@ photo by Brunel Johnson with art by Allison Horst
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       <guid>/talk/bren_alumni_2019/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/bren_alumni_2019/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -3683,7 +3695,7 @@ Three
       <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
       <guid>/talk/ecodatasci_ggplot_intro/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/talk/ecodatasci_ggplot_intro/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>

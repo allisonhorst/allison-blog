@@ -1,6 +1,6 @@
 ---
 abstract:  
-all_day: false
+all_day: true
 authors: [Allison Horst, Sara Stoudt, Sean Kross]
 date: "2021-05-27"
 # date_end: "2019-11-14"

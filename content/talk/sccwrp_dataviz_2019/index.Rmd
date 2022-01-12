@@ -1,6 +1,6 @@
 ---
 abstract: An intro dataviz workshop for SCCWRP 
-all_day: false
+all_day: true
 authors: [Allison Horst]
 date: "2019-11-14"
 # date_end: "2019-11-14"

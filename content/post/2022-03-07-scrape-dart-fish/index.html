@@ -1,0 +1,26 @@
+---
+title: "Scraping, wrangling & viz, oh my! Fun with Columbia Basin DART (fish passage data)"
+author: Allison Horst
+date: '2022-03-07'
+categories:
+  - GitHub
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>As a little side project, I decided to scrape data from the <a href="http://www.cbr.washington.edu/dart">Columbia Basic Research DART (Data Access in Real Time)</a> to explore fish passage and seasonal trends over time.</p>
+<ul>
+<li>Check out the exploratory document: <a href="https://horst.shinyapps.io/dart_fish/" class="uri">https://horst.shinyapps.io/dart_fish/</a></li>
+<li>Visit the project repo: <a href="https://github.com/allisonhorst/dart_salmon_passage" class="uri">https://github.com/allisonhorst/dart_salmon_passage</a></li>
+</ul>
+<p>This project involved:</p>
+<ul>
+<li>A little crawl over web pages with <code>purrr</code> (and loving the side effects, like <code>possibly()</code>!)</li>
+<li>Web scraping with <code>rvest</code> to access fish count tables from &gt; 1500 unique URLs</li>
+<li>Creating a function to access an html table, read it in, and combine with other scraped tables</li>
+<li>Data wrangling (<code>dplyr</code>)</li>
+<li>Data visualization (<code>ggplot2</code>)</li>
+<li>Interactive visualizations (<code>shiny</code> widgets + reactive outputs)</li>
+<li>Next steps: time series analysis &amp; forecasting!</li>
+</ul>

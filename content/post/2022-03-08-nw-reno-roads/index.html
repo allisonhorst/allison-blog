@@ -1,0 +1,130 @@
+---
+title: "Northwest Reno streetmap - dataviz fun on the side"
+author: Allison Horst
+date: '2022-03-08'
+categories:
+  - R
+  - spatial
+  - data viz
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>In this project, I create a little map of northwest Reno, NV, streets using the <code>osmdata</code> (OpenStreetMap) package.</p>
+<p>Credit: Thanks to Joshua McCrain for <a href="http://joshuamccrain.com/tutorials/maps/streets_tutorial.html">this great post</a>!</p>
+</div>
+<div id="packages-used" class="section level2">
+<h2>Packages used:</h2>
+<ul>
+<li><code>tidyverse</code>: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source
+Software, 4(43), 1686, <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a></li>
+<li><code>showtext</code>: Yixuan Qiu and authors/contributors of the included software. See file AUTHORS for details.
+(2022). showtext: Using Fonts More Easily in R Graphs. R package version 0.9-5.
+<a href="https://CRAN.R-project.org/package=showtext" class="uri">https://CRAN.R-project.org/package=showtext</a></li>
+<li><code>osmdata</code>: Mark Padgham, Bob Rudis, Robin Lovelace, Maëlle Salmon (2017). osmdata Journal of Open Source Software, 2(14).
+URL <a href="https://doi.org/10.21105/joss.00305" class="uri">https://doi.org/10.21105/joss.00305</a></li>
+<li><code>ggmap</code>: D. Kahle and H. Wickham. ggmap: Spatial Visualization with ggplot2. The R Journal, 5(1), 144-161. URL
+<a href="http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf" class="uri">http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf</a></li>
+</ul>
+</div>
+<div id="make-a-lil-street-map" class="section level2">
+<h2>Make a lil’ street map!</h2>
+<pre class="r"><code># Attach packages:
+library(tidyverse)
+library(osmdata)
+library(showtext)
+library(ggmap)
+library(ggforce)
+
+# Import font
+font_add_google(name = &quot;Gilda Display&quot;, family = &quot;gilda&quot;) # add custom fonts
+showtext_auto()
+
+# Get bounding box for Reno
+reno &lt;- getbb(&quot;Reno Nevada&quot;)
+
+# Get main roads, medium roads, small roads, and rivers
+reno_main &lt;- reno %&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;motorway&quot;, &quot;primary&quot;, &quot;motorway_link&quot;, &quot;primary_link&quot;)) %&gt;%
+  osmdata_sf()
+
+reno_med &lt;- reno %&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;secondary&quot;, &quot;tertiary&quot;, &quot;secondary_link&quot;, &quot;tertiary_link&quot;)) %&gt;%
+  osmdata_sf()
+
+reno_small &lt;- reno %&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;highway&quot;, 
+                  value = c(&quot;residential&quot;, &quot;living_street&quot;)) %&gt;%
+  osmdata_sf()
+
+# Access Truckee River
+reno_river &lt;- reno %&gt;%
+  opq()%&gt;%
+  add_osm_feature(key = &quot;waterway&quot;, value = &quot;river&quot;) %&gt;%
+  osmdata_sf()
+
+# Create endpoints of the arced arrow (to annotate the Truckee River)
+arrow &lt;- data.frame(x1 = -119.91, x2 = -119.925, y1 = 39.485, y2 = 39.51)
+
+arrow_2 &lt;- data.frame(x1 = -119.99, x2 = -120.01, y1 = 39.44, y2 = 39.435)
+
+# Combine them in a map! 
+ggplot() +
+  geom_sf(data = reno_main$osm_lines, size = 0.1) +
+  geom_sf(data = reno_med$osm_lines, size = 0.1) +
+  geom_sf(data = reno_small$osm_lines, size = 0.1) +
+  geom_sf(data = reno_river$osm_lines, size = 0.5, color = &quot;cyan4&quot;) +
+  geom_curve(data = arrow, aes(x = x1, y = y1, xend = x2, yend = y2),
+             arrow = arrow(length = unit(0.02, &quot;npc&quot;)),
+             color = &quot;cyan4&quot;) +
+  geom_curve(data = arrow_2, aes(x = x1, y = y1, xend = x2, yend = y2),
+             arrow = arrow(length = unit(0.02, &quot;npc&quot;)),
+             color = &quot;gray70&quot;,
+             curvature = -0.2) +
+  coord_sf(xlim = c(-120.0, -119.75), ylim = c(39.41, 39.55)) +
+  theme_void() +
+  theme(text = element_text(family = &quot;gilda&quot;)) +
+  annotate(geom = &quot;text&quot;, 
+           x = -119.915, y = 39.46, 
+           label = &quot;Northwest Reno, NV&quot;,
+           family = &quot;gilda&quot;,
+           size = 8) +
+  annotate(geom = &quot;text&quot;,
+           x = -119.92, y = 39.48,
+           label = &quot;Truckee River&quot;,
+           family = &quot;gilda&quot;,
+           color = &quot;cyan4&quot;
+           ) +
+  annotate(geom = &quot;text&quot;,
+           x = -119.965, y = 39.443,
+           label = &quot;to Truckee, CA&quot;,
+           family = &quot;gilda&quot;,
+           color = &quot;gray60&quot;
+           ) +
+  geom_circle(aes(x0 = -119.895, y0 = 39.515, r = 0.004), fill = &quot;white&quot;, color = &quot;gray20&quot;, size = 0.3) +
+  annotate(geom = &quot;text&quot;,
+           x = -119.895, y = 39.515,
+           label = &quot;80&quot;,
+           family = &quot;gilda&quot;,
+           color = &quot;gray20&quot;,
+           size = 3
+           ) +
+  geom_circle(aes(x0 = -119.782, y0 = 39.50, r = 0.005), fill = &quot;white&quot;, color = &quot;gray20&quot;, size = 0.3) +
+  annotate(geom = &quot;text&quot;,
+           x = -119.782, y = 39.50,
+           label = &quot;580&quot;,
+           family = &quot;gilda&quot;,
+           color = &quot;gray20&quot;,
+           size = 3
+           )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>ggsave(&quot;nw_reno.png&quot;, height = 3, width = 5, dpi = 400)</code></pre>
+</div>

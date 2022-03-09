@@ -5,12 +5,168 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 12 Oct 2021 00:00:00 -0700</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 08 Mar 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:square]</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Northwest Reno streetmap - dataviz fun on the side</title>
+      <link>/post/2022-03-08-nw-reno-roads/</link>
+      <pubDate>Tue, 08 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/post/2022-03-08-nw-reno-roads/</guid>
+      <description>
+&lt;script src=&#34;/post/2022-03-08-nw-reno-roads/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;overview&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;In this project, I create a little map of northwest Reno, NV, streets using the &lt;code&gt;osmdata&lt;/code&gt; (OpenStreetMap) package.&lt;/p&gt;
+&lt;p&gt;Credit: Thanks to Joshua McCrain for &lt;a href=&#34;http://joshuamccrain.com/tutorials/maps/streets_tutorial.html&#34;&gt;this great post&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;packages-used&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Packages used:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tidyverse&lt;/code&gt;: Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source
+Software, 4(43), 1686, &lt;a href=&#34;https://doi.org/10.21105/joss.01686&#34; class=&#34;uri&#34;&gt;https://doi.org/10.21105/joss.01686&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;showtext&lt;/code&gt;: Yixuan Qiu and authors/contributors of the included software. See file AUTHORS for details.
+(2022). showtext: Using Fonts More Easily in R Graphs. R package version 0.9-5.
+&lt;a href=&#34;https://CRAN.R-project.org/package=showtext&#34; class=&#34;uri&#34;&gt;https://CRAN.R-project.org/package=showtext&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;osmdata&lt;/code&gt;: Mark Padgham, Bob Rudis, Robin Lovelace, Maëlle Salmon (2017). osmdata Journal of Open Source Software, 2(14).
+URL &lt;a href=&#34;https://doi.org/10.21105/joss.00305&#34; class=&#34;uri&#34;&gt;https://doi.org/10.21105/joss.00305&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ggmap&lt;/code&gt;: D. Kahle and H. Wickham. ggmap: Spatial Visualization with ggplot2. The R Journal, 5(1), 144-161. URL
+&lt;a href=&#34;http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf&#34; class=&#34;uri&#34;&gt;http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-a-lil-street-map&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Make a lil’ street map!&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Attach packages:
+library(tidyverse)
+library(osmdata)
+library(showtext)
+library(ggmap)
+library(ggforce)
+
+# Import font
+font_add_google(name = &amp;quot;Gilda Display&amp;quot;, family = &amp;quot;gilda&amp;quot;) # add custom fonts
+showtext_auto()
+
+# Get bounding box for Reno
+reno &amp;lt;- getbb(&amp;quot;Reno Nevada&amp;quot;)
+
+# Get main roads, medium roads, small roads, and rivers
+reno_main &amp;lt;- reno %&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;motorway&amp;quot;, &amp;quot;primary&amp;quot;, &amp;quot;motorway_link&amp;quot;, &amp;quot;primary_link&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+reno_med &amp;lt;- reno %&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;secondary&amp;quot;, &amp;quot;tertiary&amp;quot;, &amp;quot;secondary_link&amp;quot;, &amp;quot;tertiary_link&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+reno_small &amp;lt;- reno %&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;highway&amp;quot;, 
+                  value = c(&amp;quot;residential&amp;quot;, &amp;quot;living_street&amp;quot;)) %&amp;gt;%
+  osmdata_sf()
+
+# Access Truckee River
+reno_river &amp;lt;- reno %&amp;gt;%
+  opq()%&amp;gt;%
+  add_osm_feature(key = &amp;quot;waterway&amp;quot;, value = &amp;quot;river&amp;quot;) %&amp;gt;%
+  osmdata_sf()
+
+# Create endpoints of the arced arrow (to annotate the Truckee River)
+arrow &amp;lt;- data.frame(x1 = -119.91, x2 = -119.925, y1 = 39.485, y2 = 39.51)
+
+arrow_2 &amp;lt;- data.frame(x1 = -119.99, x2 = -120.01, y1 = 39.44, y2 = 39.435)
+
+# Combine them in a map! 
+ggplot() +
+  geom_sf(data = reno_main$osm_lines, size = 0.1) +
+  geom_sf(data = reno_med$osm_lines, size = 0.1) +
+  geom_sf(data = reno_small$osm_lines, size = 0.1) +
+  geom_sf(data = reno_river$osm_lines, size = 0.5, color = &amp;quot;cyan4&amp;quot;) +
+  geom_curve(data = arrow, aes(x = x1, y = y1, xend = x2, yend = y2),
+             arrow = arrow(length = unit(0.02, &amp;quot;npc&amp;quot;)),
+             color = &amp;quot;cyan4&amp;quot;) +
+  geom_curve(data = arrow_2, aes(x = x1, y = y1, xend = x2, yend = y2),
+             arrow = arrow(length = unit(0.02, &amp;quot;npc&amp;quot;)),
+             color = &amp;quot;gray70&amp;quot;,
+             curvature = -0.2) +
+  coord_sf(xlim = c(-120.0, -119.75), ylim = c(39.41, 39.55)) +
+  theme_void() +
+  theme(text = element_text(family = &amp;quot;gilda&amp;quot;)) +
+  annotate(geom = &amp;quot;text&amp;quot;, 
+           x = -119.915, y = 39.46, 
+           label = &amp;quot;Northwest Reno, NV&amp;quot;,
+           family = &amp;quot;gilda&amp;quot;,
+           size = 8) +
+  annotate(geom = &amp;quot;text&amp;quot;,
+           x = -119.92, y = 39.48,
+           label = &amp;quot;Truckee River&amp;quot;,
+           family = &amp;quot;gilda&amp;quot;,
+           color = &amp;quot;cyan4&amp;quot;
+           ) +
+  annotate(geom = &amp;quot;text&amp;quot;,
+           x = -119.965, y = 39.443,
+           label = &amp;quot;to Truckee, CA&amp;quot;,
+           family = &amp;quot;gilda&amp;quot;,
+           color = &amp;quot;gray60&amp;quot;
+           ) +
+  geom_circle(aes(x0 = -119.895, y0 = 39.515, r = 0.004), fill = &amp;quot;white&amp;quot;, color = &amp;quot;gray20&amp;quot;, size = 0.3) +
+  annotate(geom = &amp;quot;text&amp;quot;,
+           x = -119.895, y = 39.515,
+           label = &amp;quot;80&amp;quot;,
+           family = &amp;quot;gilda&amp;quot;,
+           color = &amp;quot;gray20&amp;quot;,
+           size = 3
+           ) +
+  geom_circle(aes(x0 = -119.782, y0 = 39.50, r = 0.005), fill = &amp;quot;white&amp;quot;, color = &amp;quot;gray20&amp;quot;, size = 0.3) +
+  annotate(geom = &amp;quot;text&amp;quot;,
+           x = -119.782, y = 39.50,
+           label = &amp;quot;580&amp;quot;,
+           family = &amp;quot;gilda&amp;quot;,
+           color = &amp;quot;gray20&amp;quot;,
+           size = 3
+           )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-08-nw-reno-roads/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggsave(&amp;quot;nw_reno.png&amp;quot;, height = 3, width = 5, dpi = 400)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scraping, wrangling &amp; viz, oh my! Fun with Columbia Basin DART (fish passage data)</title>
+      <link>/post/2022-03-07-scrape-dart-fish/</link>
+      <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/post/2022-03-07-scrape-dart-fish/</guid>
+      <description>
+&lt;script src=&#34;/post/2022-03-07-scrape-dart-fish/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;As a little side project, I decided to scrape data from the &lt;a href=&#34;http://www.cbr.washington.edu/dart&#34;&gt;Columbia Basic Research DART (Data Access in Real Time)&lt;/a&gt; to explore fish passage and seasonal trends over time.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check out the exploratory document: &lt;a href=&#34;https://horst.shinyapps.io/dart_fish/&#34; class=&#34;uri&#34;&gt;https://horst.shinyapps.io/dart_fish/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Visit the project repo: &lt;a href=&#34;https://github.com/allisonhorst/dart_salmon_passage&#34; class=&#34;uri&#34;&gt;https://github.com/allisonhorst/dart_salmon_passage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This project involved:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A little crawl over web pages with &lt;code&gt;purrr&lt;/code&gt; (and loving the side effects, like &lt;code&gt;possibly()&lt;/code&gt;!)&lt;/li&gt;
+&lt;li&gt;Web scraping with &lt;code&gt;rvest&lt;/code&gt; to access fish count tables from &amp;gt; 1500 unique URLs&lt;/li&gt;
+&lt;li&gt;Creating a function to access an html table, read it in, and combine with other scraped tables&lt;/li&gt;
+&lt;li&gt;Data wrangling (&lt;code&gt;dplyr&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Data visualization (&lt;code&gt;ggplot2&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Interactive visualizations (&lt;code&gt;shiny&lt;/code&gt; widgets + reactive outputs)&lt;/li&gt;
+&lt;li&gt;Next steps: time series analysis &amp;amp; forecasting!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Tidy data for reproducibility, efficiency, and collaboration (originally published on the Openscapes blog)</title>

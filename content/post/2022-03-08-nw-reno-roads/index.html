@@ -2,10 +2,6 @@
 title: "Northwest Reno streetmap - dataviz fun on the side"
 author: Allison Horst
 date: '2022-03-08'
-categories:
-  - R
-  - spatial
-  - data viz
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
@@ -38,6 +34,7 @@ library(osmdata)
 library(showtext)
 library(ggmap)
 library(ggforce)
+library(here)
 
 # Import font
 font_add_google(name = &quot;Gilda Display&quot;, family = &quot;gilda&quot;) # add custom fonts
@@ -96,18 +93,20 @@ ggplot() +
            x = -119.915, y = 39.46, 
            label = &quot;Northwest Reno, NV&quot;,
            family = &quot;gilda&quot;,
-           size = 8) +
+           size = 30) +
   annotate(geom = &quot;text&quot;,
            x = -119.92, y = 39.48,
            label = &quot;Truckee River&quot;,
            family = &quot;gilda&quot;,
-           color = &quot;cyan4&quot;
+           color = &quot;cyan4&quot;,
+           size = 20
            ) +
   annotate(geom = &quot;text&quot;,
            x = -119.965, y = 39.443,
            label = &quot;to Truckee, CA&quot;,
            family = &quot;gilda&quot;,
-           color = &quot;gray60&quot;
+           color = &quot;gray60&quot;,
+           size = 20
            ) +
   geom_circle(aes(x0 = -119.895, y0 = 39.515, r = 0.004), fill = &quot;white&quot;, color = &quot;gray20&quot;, size = 0.3) +
   annotate(geom = &quot;text&quot;,
@@ -115,7 +114,7 @@ ggplot() +
            label = &quot;80&quot;,
            family = &quot;gilda&quot;,
            color = &quot;gray20&quot;,
-           size = 3
+           size = 12
            ) +
   geom_circle(aes(x0 = -119.782, y0 = 39.50, r = 0.005), fill = &quot;white&quot;, color = &quot;gray20&quot;, size = 0.3) +
   annotate(geom = &quot;text&quot;,
@@ -123,8 +122,10 @@ ggplot() +
            label = &quot;580&quot;,
            family = &quot;gilda&quot;,
            color = &quot;gray20&quot;,
-           size = 3
-           )</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>ggsave(&quot;nw_reno.png&quot;, height = 3, width = 5, dpi = 400)</code></pre>
+           size = 12
+           )
+
+ggsave(&quot;featured_nw_reno.png&quot;, height = 4, width = 7, dpi = 600)</code></pre>
+<pre class="r"><code>knitr::include_graphics(here::here(&quot;content&quot;, &quot;post&quot;, &quot;2022-03-08-nw-reno-roads&quot;, &quot;featured_nw_reno.png&quot;))</code></pre>
+<p><img src="featured_nw_reno.png" width="2100" /></p>
 </div>

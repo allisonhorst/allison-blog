@@ -90,6 +90,7 @@ library(osmdata)
 library(showtext)
 library(ggmap)
 library(ggforce)
+library(here)
 
 # Import font
 font_add_google(name = &amp;quot;Gilda Display&amp;quot;, family = &amp;quot;gilda&amp;quot;) # add custom fonts
@@ -148,18 +149,20 @@ ggplot() +
            x = -119.915, y = 39.46, 
            label = &amp;quot;Northwest Reno, NV&amp;quot;,
            family = &amp;quot;gilda&amp;quot;,
-           size = 8) +
+           size = 30) +
   annotate(geom = &amp;quot;text&amp;quot;,
            x = -119.92, y = 39.48,
            label = &amp;quot;Truckee River&amp;quot;,
            family = &amp;quot;gilda&amp;quot;,
-           color = &amp;quot;cyan4&amp;quot;
+           color = &amp;quot;cyan4&amp;quot;,
+           size = 20
            ) +
   annotate(geom = &amp;quot;text&amp;quot;,
            x = -119.965, y = 39.443,
            label = &amp;quot;to Truckee, CA&amp;quot;,
            family = &amp;quot;gilda&amp;quot;,
-           color = &amp;quot;gray60&amp;quot;
+           color = &amp;quot;gray60&amp;quot;,
+           size = 20
            ) +
   geom_circle(aes(x0 = -119.895, y0 = 39.515, r = 0.004), fill = &amp;quot;white&amp;quot;, color = &amp;quot;gray20&amp;quot;, size = 0.3) +
   annotate(geom = &amp;quot;text&amp;quot;,
@@ -167,7 +170,7 @@ ggplot() +
            label = &amp;quot;80&amp;quot;,
            family = &amp;quot;gilda&amp;quot;,
            color = &amp;quot;gray20&amp;quot;,
-           size = 3
+           size = 12
            ) +
   geom_circle(aes(x0 = -119.782, y0 = 39.50, r = 0.005), fill = &amp;quot;white&amp;quot;, color = &amp;quot;gray20&amp;quot;, size = 0.3) +
   annotate(geom = &amp;quot;text&amp;quot;,
@@ -175,10 +178,12 @@ ggplot() +
            label = &amp;quot;580&amp;quot;,
            family = &amp;quot;gilda&amp;quot;,
            color = &amp;quot;gray20&amp;quot;,
-           size = 3
-           )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2022-03-08-nw-reno-roads/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggsave(&amp;quot;nw_reno.png&amp;quot;, height = 3, width = 5, dpi = 400)&lt;/code&gt;&lt;/pre&gt;
+           size = 12
+           )
+
+ggsave(&amp;quot;featured_nw_reno.png&amp;quot;, height = 4, width = 7, dpi = 600)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::include_graphics(here::here(&amp;quot;content&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;2022-03-08-nw-reno-roads&amp;quot;, &amp;quot;featured_nw_reno.png&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;featured_nw_reno.png&#34; width=&#34;2100&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

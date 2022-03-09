@@ -2,10 +2,6 @@
 title: "Northwest Reno streetmap - dataviz fun on the side"
 author: Allison Horst
 date: '2022-03-08'
-categories:
-  - R
-  - spatial
-  - data viz
 ---
 
 ## Overview
@@ -28,13 +24,14 @@ Credit: Thanks to Joshua McCrain for [this great post](http://joshuamccrain.com/
 
 ## Make a lil' street map!
 
-```{r, message = FALSE, warning = FALSE, cache = TRUE}
+```{r, message = FALSE, warning = FALSE, eval = FALSE}
 # Attach packages:
 library(tidyverse)
 library(osmdata)
 library(showtext)
 library(ggmap)
 library(ggforce)
+library(here)
 
 # Import font
 font_add_google(name = "Gilda Display", family = "gilda") # add custom fonts
@@ -93,18 +90,20 @@ ggplot() +
            x = -119.915, y = 39.46, 
            label = "Northwest Reno, NV",
            family = "gilda",
-           size = 8) +
+           size = 30) +
   annotate(geom = "text",
            x = -119.92, y = 39.48,
            label = "Truckee River",
            family = "gilda",
-           color = "cyan4"
+           color = "cyan4",
+           size = 20
            ) +
   annotate(geom = "text",
            x = -119.965, y = 39.443,
            label = "to Truckee, CA",
            family = "gilda",
-           color = "gray60"
+           color = "gray60",
+           size = 20
            ) +
   geom_circle(aes(x0 = -119.895, y0 = 39.515, r = 0.004), fill = "white", color = "gray20", size = 0.3) +
   annotate(geom = "text",
@@ -112,7 +111,7 @@ ggplot() +
            label = "80",
            family = "gilda",
            color = "gray20",
-           size = 3
+           size = 12
            ) +
   geom_circle(aes(x0 = -119.782, y0 = 39.50, r = 0.005), fill = "white", color = "gray20", size = 0.3) +
   annotate(geom = "text",
@@ -120,8 +119,13 @@ ggplot() +
            label = "580",
            family = "gilda",
            color = "gray20",
-           size = 3
+           size = 12
            )
 
-ggsave("nw_reno.png", height = 3, width = 5, dpi = 400)
+ggsave("featured_nw_reno.png", height = 4, width = 7, dpi = 600)
 ```
+
+```{r}
+knitr::include_graphics(here::here("content", "post", "2022-03-08-nw-reno-roads", "featured_nw_reno.png"))
+```
+

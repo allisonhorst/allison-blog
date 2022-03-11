@@ -5,12 +5,492 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 08 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 10 Mar 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:square]</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Exploring tree outcomes following fires</title>
+      <link>/post/2022-03-10-tree-mortality-fires/fire_tree_mortality/</link>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/post/2022-03-10-tree-mortality-fires/fire_tree_mortality/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;overview&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Basically, there’s this awesome dataset on tree survival following fires, the Fire and Tree Mortality Database, and I want to go exploring &amp;amp; compare fire survival across species. Some fun with &lt;code&gt;tidymodels&lt;/code&gt;, data visualization, binary logistic regression, and my first shot at using the fantastic &lt;code&gt;geomtextpath&lt;/code&gt; package!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;citations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Citations:&lt;/h2&gt;
+&lt;p&gt;Cansler, C. Alina; Hood, Sharon M.; Varner, J. Morgan; van Mantgem, Phillip J.; Agne, Michelle C.; Andrus, Robert A.; Ayres, Matthew P.; Ayres, Bruce D.; Bakker, Jonathan D.; Battaglia, Michael A.; Bentz, Barbara J.; Breece, Carolyn R.; Brown, James K.; Cluck, Daniel R.; Coleman, Tom W.; Corace, R. Gregory; Covington, W. Wallace; Cram, Douglas S.; Cronan, James B.; Crouse, Joseph E.; Das, Adrian J.; Davis, Ryan S.; Dickinson, Darci M.; Fitzgerald, Stephen A.; Fulé, Peter Z.; Ganio, Lisa M.; Grayson, Lindsay M.; Halpern, Charles B.; Hanula, Jim L.; Harvey, Brian J.; Hiers, J. Kevin; Huffman, David W.; Keifer, MaryBeth; Keyser, Tara L.; Kobziar, Leda N.; Kolb, Thomas E.; Kolden, Crystal A.; Kopper, Karen E.; Kreitler, Jason R.; Kreye, Jesse K.; Latimer, Andrew M.; Lerch, Andrew P.; Lombardero, Maria J.; McDaniel, Virginia L.; McHugh, Charles W.; McMillin, Joel D.; Moghaddas, Jason J.; O’Brien, Joseph J.; Perrakis, Daniel D.B.; Peterson, David W.; Prichard, Susan J.; Progar, Robert A.; Raffa, Kenneth F.; Reinhardt, Elizabeth D.; Restaino, Joseph C.; Roccaforte, John P.; Rogers, Brendan M.; Ryan, Kevin C.; Safford, Hugh D.; Santoro, Alyson E.; Shearman, Timothy M.; Shumate, Alice M.; Sieg, Carolyn H.; Smith, Sheri L.; Smith, Rebecca J.; Stephenson, Nathan L.; Steuver, Mary; Stevens, Jens T.; Stoddard, Michael T.; Thies, Walter G.; Vaillant, Nicole M.; Weiss, Shelby A.; Westlind, Douglas J.; Woolley, Travis J.; Wright, Michah. 2020. Fire and tree mortality database (FTM). Fort Collins, CO: Forest Service Research Data Archive. Updated 24 July 2020. &lt;a href=&#34;https://doi.org/10.2737/RDS-2020-0001&#34; class=&#34;uri&#34;&gt;https://doi.org/10.2737/RDS-2020-0001&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Cansler, C. Alina; Hood, Sharon M.; Varner, J. Morgan; van Mantgem, Phillip J.; Agne, Michelle C.; Andrus, Robert A.; Ayres, Matthew P.; Ayres, Bruce D.; Bakker, Jonathan D.; Battaglia, Michael A.; Bentz, Barbara J.; Breece, Carolyn R.; Brown, James K.; Cluck, Daniel R.; Coleman, Tom W.; Corace, R. Gregory; Covington, W. Wallace; Cram, Douglas S.; Cronan, James B.; Crouse, Joseph E.; Das, Adrian J.; Davis, Ryan S.; Dickinson, Darci M.; Fitzgerald, Stephen A.; Fulé, Peter Z.; Ganio, Lisa M.; Grayson, Lindsay M.; Halpern, Charles B.; Hanula, Jim L.; Harvey, Brian J.; Hiers, J. Kevin; Huffman, David W.; Keifer, MaryBeth; Keyser, Tara L.; Kobziar, Leda N.; Kolb, Thomas E.; Kolden, Crystal A.; Kopper, Karen E.; Kreitler, Jason R.; Kreye, Jesse K.; Latimer, Andrew M.; Lerch, Andrew P.; Lombardero, Maria J.; McDaniel, Virginia L.; McHugh, Charles W.; McMillin, Joel D.; Moghaddas, Jason J.; O’Brien, Joseph J.; Perrakis, Daniel D.B.; Peterson, David W.; Prichard, Susan J.; Progar, Robert A.; Raffa, Kenneth F.; Reinhardt, Elizabeth D.; Restaino, Joseph C.; Roccaforte, John P.; Rogers, Brendan M.; Ryan, Kevin C.; Safford, Hugh D.; Santoro, Alyson E.; Shearman, Timothy M.; Shumate, Alice M.; Sieg, Carolyn H.; Smith, Sheri L.; Smith, Rebecca J.; Stephenson, Nathan L.; Steuver, Mary; Stevens, Jens T.; Stoddard, Michael T.; Thies, Walter G.; Vaillant, Nicole M.; Weiss, Shelby A.; Westlind, Douglas J.; Woolley, Travis J.; Wright, Michah C. 2020. The Fire and Tree Mortality Database, for empirical modeling of individual tree mortality after fire. Scientific Data 7: 194. &lt;a href=&#34;https://doi.org/10.1038/s41597-020-0522-7&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1038/s41597-020-0522-7&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;attach-packages-read-in-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Attach packages &amp;amp; read in the data&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(here)
+library(naniar)
+library(tidymodels)
+library(geomtextpath)
+library(paletteer)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fires &amp;lt;- read_csv(here(&amp;quot;content&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;2022-03-10-tree-mortality-fires&amp;quot;, &amp;quot;data&amp;quot;, &amp;quot;Data&amp;quot;, &amp;quot;FTM_fires.csv&amp;quot;)) # Fire information
+trees &amp;lt;- read_csv(here(&amp;quot;content&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;2022-03-10-tree-mortality-fires&amp;quot;, &amp;quot;data&amp;quot;, &amp;quot;Data&amp;quot;, &amp;quot;FTM_trees.csv&amp;quot;)) # Tree outcomes and records
+bark &amp;lt;- read_csv(here(&amp;quot;content&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;2022-03-10-tree-mortality-fires&amp;quot;, &amp;quot;data&amp;quot;, &amp;quot;Data&amp;quot;, &amp;quot;Species_BarkThickness.csv&amp;quot;)) # Bark thickness &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Important information: See attributes in &lt;code&gt;_metadata_RDS-2020-0001.html&lt;/code&gt; for variable definitions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-visualization&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Exploratory data visualization&lt;/h2&gt;
+&lt;p&gt;Counts of tree species in the dataset:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Find the top 20 most counted tree species
+trees &amp;lt;- trees %&amp;gt;% 
+  mutate(sci_name = paste(Genus, Species_name)) %&amp;gt;% 
+  filter(sci_name != &amp;quot;Pinus jeffreyi or ponderosa&amp;quot;)
+
+tree_count_top_20 &amp;lt;- trees %&amp;gt;% 
+  count(sci_name) %&amp;gt;% 
+  mutate(sci_name = fct_reorder(sci_name, n)) %&amp;gt;% 
+  slice_max(n, n = 20)
+
+ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(y = &amp;quot;\nObservations in dataset&amp;quot;,
+       x = &amp;quot;Scientific name&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Counts of live (0) and dead (1) for the top 20 most recorded trees in the dataset:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Make a long form of the trees dataset (top 20 most observed tree species)
+trees_long &amp;lt;- trees %&amp;gt;% 
+  pivot_longer(cols = yr0status:yr10status, names_to = &amp;quot;yr_outcome&amp;quot;, values_to = &amp;quot;live_dead&amp;quot;) %&amp;gt;% 
+  mutate(yr_since_fire = as.numeric(parse_number(yr_outcome)),
+         live_dead_chr = case_when(
+           live_dead == 0 ~ &amp;quot;live&amp;quot;,
+           live_dead == 1 ~ &amp;quot;dead&amp;quot;
+         )) %&amp;gt;% 
+  filter(sci_name %in% tree_count_top_20$sci_name)
+
+trees_live_dead &amp;lt;- trees_long %&amp;gt;% 
+  count(sci_name, yr_since_fire, live_dead_chr) %&amp;gt;% 
+  drop_na()
+  
+ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
+  geom_col(aes(fill = live_dead_chr), position = &amp;quot;fill&amp;quot;) +
+  scale_fill_manual(values = c(&amp;quot;lightsalmon&amp;quot;, &amp;quot;forestgreen&amp;quot;),
+                    name = &amp;quot;Live / dead:&amp;quot;) +
+  scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
+  theme_minimal() +
+  labs(x = &amp;quot;Years since fire&amp;quot;,
+       y = &amp;quot;Proportion live / dead&amp;quot;,
+       title = &amp;quot;Tree survival post-fire&amp;quot;,
+       subtitle = &amp;quot;Only includes the 20 most observed trees in the dataset&amp;quot;,
+       caption = &amp;quot;Data: Fire and tree mortality database (FTM)&amp;quot;) +
+  facet_wrap(~sci_name)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;We can already see some interesting differences in survival across species. For example, &lt;em&gt;Picea mariana&lt;/em&gt; and &lt;em&gt;Abies lasiocarpa&lt;/em&gt; experience quick mortality within the first year; others like &lt;em&gt;Pinus jeffreyi&lt;/em&gt; and &lt;em&gt;Abies concolor&lt;/em&gt; appear more resilient. However, near-complete mortality is observed across all species within 10 years.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ponderosa-pines---diving-a-bit-deeper&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ponderosa pines - diving a bit deeper&lt;/h2&gt;
+&lt;p&gt;Since it is the most observed species in the dataset &lt;em&gt;and&lt;/em&gt; because it happens to be one of my favorite trees, I’ll dive a bit deeper into factors that may influence &lt;em&gt;Pinus ponderosa&lt;/em&gt; mortality post-fire.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa &amp;lt;- trees_long %&amp;gt;% 
+  filter(sci_name == &amp;quot;Pinus ponderosa&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;First, let’s take a look at mortality over time (years since fire):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data = ponderosa, aes(x = yr_since_fire, y = live_dead)) +
+  geom_jitter(alpha = 0.008) +
+  labs(x = &amp;quot;Years since fire&amp;quot;,
+       y = &amp;quot;Tree status (live / dead)&amp;quot;,
+       title = &amp;quot;Ponderosa pine mortality post-fire&amp;quot;,
+       caption = &amp;quot;Data: Fire and tree mortality database (FTM)&amp;quot;) +
+  scale_y_continuous(breaks = c(0, 1), labels = c(&amp;quot;Live&amp;quot;, &amp;quot;Dead&amp;quot;)) +
+  scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;classification-binary-logistic-regression-in-tidymodels&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Classification: binary logistic regression in &lt;code&gt;tidymodels&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Create the training &amp;amp; testing sets&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa &amp;lt;- ponderosa %&amp;gt;% 
+  drop_na(yr_since_fire, live_dead) %&amp;gt;% 
+  mutate(live_dead = as.factor(live_dead))
+
+# Make the training &amp;amp; testing dataset:
+ponderosa_split &amp;lt;- ponderosa %&amp;gt;% 
+  initial_split(prop = 4/5)
+
+# Confirm the splits (Analysis/Assess/Total): 
+ponderosa_split&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;Analysis/Assess/Total&amp;gt;
+## &amp;lt;293297/73325/366622&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Extract the training and testing sets: 
+ponderosa_train &amp;lt;- training(ponderosa_split)
+ponderosa_test &amp;lt;- testing(ponderosa_split)
+
+# Check them out a bit: 
+ponderosa_train %&amp;gt;% 
+  count(yr_since_fire, live_dead)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
+##    yr_since_fire live_dead     n
+##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
+##  1             0 0         39667
+##  2             0 1           538
+##  3             1 0         39063
+##  4             1 1         10351
+##  5             2 0         27011
+##  6             2 1         12946
+##  7             3 0         23595
+##  8             3 1         14791
+##  9             4 0          8641
+## 10             4 1         14995
+## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_test %&amp;gt;% 
+  count(yr_since_fire, live_dead)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
+##    yr_since_fire live_dead     n
+##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
+##  1             0 0         10002
+##  2             0 1           151
+##  3             1 0          9816
+##  4             1 1          2618
+##  5             2 0          6697
+##  6             2 1          3148
+##  7             3 0          5958
+##  8             3 1          3710
+##  9             4 0          2162
+## 10             4 1          3758
+## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-a-recipe&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Make a recipe&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Just using the single predictor here:
+ponderosa_recipe &amp;lt;- recipe(live_dead ~ yr_since_fire, data = ponderosa)
+ponderosa_recipe &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-the-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Make the model&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_model &amp;lt;- 
+  logistic_reg() %&amp;gt;%
+  set_engine(&amp;quot;glm&amp;quot;) %&amp;gt;%
+  set_mode(&amp;quot;classification&amp;quot;) # Binary classificiation&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-the-workflow&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Make the workflow&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_wf &amp;lt;- workflow() %&amp;gt;% 
+  add_recipe(ponderosa_recipe) %&amp;gt;% 
+  add_model(ponderosa_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fit-the-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Fit the model:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_fit &amp;lt;- ponderosa_wf %&amp;gt;% 
+  last_fit(ponderosa_split)
+
+# Which returns high accuracy and roc_auc:
+ponderosa_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 4
+##   .metric  .estimator .estimate .config             
+##   &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 accuracy binary         0.806 Preprocessor1_Model1
+## 2 roc_auc  binary         0.879 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;proof-of-concept-check-out-the-test-set-predictions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Proof of concept: check out the test set predictions&lt;/h3&gt;
+&lt;p&gt;…just for the first 20 rows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_fit %&amp;gt;% 
+  collect_predictions() %&amp;gt;% 
+  head(20)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 20 × 7
+##    id               .pred_0 .pred_1  .row .pred_class live_dead .config         
+##    &amp;lt;chr&amp;gt;              &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;fct&amp;gt;       &amp;lt;fct&amp;gt;     &amp;lt;chr&amp;gt;           
+##  1 train/test split  0.839   0.161      1 0           1         Preprocessor1_M…
+##  2 train/test split  0.565   0.435      3 0           1         Preprocessor1_M…
+##  3 train/test split  0.0392  0.961      8 1           1         Preprocessor1_M…
+##  4 train/test split  0.0101  0.990     10 1           1         Preprocessor1_M…
+##  5 train/test split  0.246   0.754     19 1           1         Preprocessor1_M…
+##  6 train/test split  0.839   0.161     29 0           1         Preprocessor1_M…
+##  7 train/test split  0.394   0.606     32 1           1         Preprocessor1_M…
+##  8 train/test split  0.565   0.435     42 0           0         Preprocessor1_M…
+##  9 train/test split  0.912   0.0878    43 0           0         Preprocessor1_M…
+## 10 train/test split  0.839   0.161     48 0           0         Preprocessor1_M…
+## 11 train/test split  0.565   0.435     53 0           1         Preprocessor1_M…
+## 12 train/test split  0.0392  0.961     58 1           1         Preprocessor1_M…
+## 13 train/test split  0.0200  0.980     59 1           1         Preprocessor1_M…
+## 14 train/test split  0.912   0.0878    65 0           0         Preprocessor1_M…
+## 15 train/test split  0.0101  0.990     75 1           1         Preprocessor1_M…
+## 16 train/test split  0.912   0.0878    80 0           0         Preprocessor1_M…
+## 17 train/test split  0.0754  0.925     90 1           1         Preprocessor1_M…
+## 18 train/test split  0.722   0.278     95 0           1         Preprocessor1_M…
+## 19 train/test split  0.565   0.435     96 0           1         Preprocessor1_M…
+## 20 train/test split  0.0392  0.961    101 1           1         Preprocessor1_M…&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;confusion-matrix-of-truth-predictions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Confusion matrix of truth / predictions&lt;/h3&gt;
+&lt;p&gt;Recall here: 0 = “Live”, 1 = “Dead”&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_fit %&amp;gt;% 
+  collect_predictions() %&amp;gt;% 
+  conf_mat(truth = live_dead, estimate = .pred_class)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           Truth
+## Prediction     0     1
+##          0 32473  9627
+##          1  4575 26650&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fit-on-entire-dataset&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Fit on entire dataset&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_model_full &amp;lt;- fit(ponderosa_wf, ponderosa)
+
+ponderosa_model_full&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ══ Workflow [trained] ══════════════════════════════════════════════════════════
+## Preprocessor: Recipe
+## Model: logistic_reg()
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## 0 Recipe Steps
+## 
+## ── Model ───────────────────────────────────────────────────────────────────────
+## 
+## Call:  stats::glm(formula = ..y ~ ., family = stats::binomial, data = data)
+## 
+## Coefficients:
+##   (Intercept)  yr_since_fire  
+##       -2.3424         0.6929  
+## 
+## Degrees of Freedom: 366621 Total (i.e. Null);  366620 Residual
+## Null Deviance:       508200 
+## Residual Deviance: 318000    AIC: 318000&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;making-new-predictions&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Making new predictions&lt;/h3&gt;
+&lt;p&gt;Let’s say we want to predict survival of other ponderosa pines based solely on years post-fire:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Make a data frame containing a &amp;quot;yr_since_fire&amp;quot; variable as a new model input:
+new_yr &amp;lt;- data.frame(yr_since_fire = c(0, 0.4, 1, 2.2, 5.7, 8.3))
+
+# Then use the model to predict outcomes, bind together: 
+example_predictions &amp;lt;- data.frame(new_yr, predict(ponderosa_model_full, new_yr))
+
+example_predictions&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   yr_since_fire .pred_class
+## 1           0.0           0
+## 2           0.4           0
+## 3           1.0           0
+## 4           2.2           0
+## 5           5.7           1
+## 6           8.3           1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This does seem to align with what we’d expect based on the data visualization. We can also find the &lt;em&gt;probability&lt;/em&gt; of “Dead” (outcome = 1) using the model predictions, adding &lt;code&gt;type = &#34;prob&#34;&lt;/code&gt; within the &lt;code&gt;predict()&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;predict_over &amp;lt;- data.frame(yr_since_fire = seq(from = 0, to = 10, by = 0.1))
+predictions_full &amp;lt;- data.frame(predict_over, predict(ponderosa_model_full, predict_over, type = &amp;quot;prob&amp;quot;))
+names(predictions_full) &amp;lt;- c(&amp;quot;yr_since_fire&amp;quot;, &amp;quot;prob_alive&amp;quot;, &amp;quot;prob_dead&amp;quot;)
+
+# Plot probability of mortality:
+ggplot() +
+  geom_line(data = predictions_full, aes(x = yr_since_fire, y = prob_alive), color = &amp;quot;gray30&amp;quot;, size = 1) +
+  labs(x = &amp;quot;Years since fire&amp;quot;,
+       y = &amp;quot;Probability of tree being alive&amp;quot;,
+       title = &amp;quot;Predicted Ponderosa pine mortality post-fire&amp;quot;,
+       caption = &amp;quot;Data: Fire and tree mortality database (FTM)&amp;quot;) +
+  scale_y_continuous(breaks = c(0, 0.5,  1), 
+                     labels = c(&amp;quot;0%&amp;quot;, &amp;quot;50%&amp;quot;, &amp;quot;100%&amp;quot;),
+                     limits = c(0, 1)) +
+  scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;extending-the-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Extending the model&lt;/h2&gt;
+&lt;p&gt;I want to extend this model for the 20 most observed trees in the dataset (so will include species as a predictor variable).&lt;/p&gt;
+&lt;p&gt;Create the training &amp;amp; testing sets&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20 &amp;lt;- trees_long %&amp;gt;% 
+  filter(sci_name %in% c(tree_count_top_20$sci_name)) %&amp;gt;% 
+  drop_na(yr_since_fire, live_dead) %&amp;gt;% 
+  mutate(live_dead = as.factor(live_dead))
+
+# Make the training &amp;amp; testing dataset:
+trees_20_split &amp;lt;- trees_20 %&amp;gt;% 
+  initial_split(prop = 4/5)
+
+# Confirm the splits (Analysis/Assess/Total): 
+trees_20_split&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## &amp;lt;Analysis/Assess/Total&amp;gt;
+## &amp;lt;830790/207698/1038488&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Extract the training and testing sets: 
+trees_20_train &amp;lt;- training(trees_20_split)
+trees_20_test &amp;lt;- testing(trees_20_split)
+
+# Check them out a bit: 
+trees_20_train %&amp;gt;% 
+  count(yr_since_fire, live_dead)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
+##    yr_since_fire live_dead     n
+##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
+##  1             0 0         77352
+##  2             0 1          2943
+##  3             1 0         73476
+##  4             1 1         30453
+##  5             2 0         51667
+##  6             2 1         47273
+##  7             3 0         43116
+##  8             3 1         54772
+##  9             4 0         22361
+## 10             4 1         55608
+## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_test %&amp;gt;% 
+  count(yr_since_fire, live_dead)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
+##    yr_since_fire live_dead     n
+##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
+##  1             0 0         19774
+##  2             0 1           711
+##  3             1 0         18287
+##  4             1 1          7741
+##  5             2 0         12869
+##  6             2 1         11793
+##  7             3 0         10845
+##  8             3 1         13696
+##  9             4 0          5665
+## 10             4 1         13835
+## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;make-a-recipe-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Make a recipe&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Just using the single predictor here:
+trees_20_recipe &amp;lt;- recipe(live_dead ~ yr_since_fire + sci_name, data = trees_20)
+trees_20_recipe&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-the-model-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Make the model&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_model &amp;lt;- 
+  logistic_reg() %&amp;gt;%
+  set_engine(&amp;quot;glm&amp;quot;) %&amp;gt;%
+  set_mode(&amp;quot;classification&amp;quot;) # Binary classificiation&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;make-the-workflow-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Make the workflow&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_wf &amp;lt;- workflow() %&amp;gt;% 
+  add_recipe(trees_20_recipe) %&amp;gt;% 
+  add_model(trees_20_model)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fit-the-model-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Fit the model:&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_fit &amp;lt;- trees_20_wf %&amp;gt;% 
+  last_fit(trees_20_split)
+
+# Which returns high accuracy and roc_auc:
+trees_20_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 4
+##   .metric  .estimator .estimate .config             
+##   &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
+## 1 accuracy binary         0.820 Preprocessor1_Model1
+## 2 roc_auc  binary         0.893 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;confusion-matrix-of-truth-predictions-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Confusion matrix of truth / predictions&lt;/h3&gt;
+&lt;p&gt;Recall here: 0 = “Live”, 1 = “Dead”&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_fit %&amp;gt;% 
+  collect_predictions() %&amp;gt;% 
+  conf_mat(truth = live_dead, estimate = .pred_class)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##           Truth
+## Prediction      0      1
+##          0  57896  20051
+##          1  17323 112428&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fit-on-entire-dataset-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Fit on entire dataset&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_model_full &amp;lt;- fit(trees_20_wf, trees_20)
+
+trees_20_model_full&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ══ Workflow [trained] ══════════════════════════════════════════════════════════
+## Preprocessor: Recipe
+## Model: logistic_reg()
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## 0 Recipe Steps
+## 
+## ── Model ───────────────────────────────────────────────────────────────────────
+## 
+## Call:  stats::glm(formula = ..y ~ ., family = stats::binomial, data = data)
+## 
+## Coefficients:
+##                   (Intercept)                  yr_since_fire  
+##                      -1.89320                        0.61524  
+##         sci_nameAbies grandis       sci_nameAbies lasiocarpa  
+##                       0.69818                        2.72269  
+##           sci_nameAcer rubrum   sci_nameCalocedrus decurrens  
+##                       0.54265                        0.24419  
+##  sci_nameJuniperus scopulorum     sci_nameLarix occidentalis  
+##                       0.94475                       -1.21916  
+##     sci_namePicea engelmannii          sci_namePicea mariana  
+##                       1.88703                        5.68710  
+##      sci_namePinus albicaulis         sci_namePinus contorta  
+##                       2.17161                        1.78648  
+##        sci_namePinus echinata         sci_namePinus jeffreyi  
+##                       0.56136                       -0.54492  
+##     sci_namePinus lambertiana        sci_namePinus palustris  
+##                       0.30286                       -1.42278  
+##       sci_namePinus ponderosa            sci_namePinus taeda  
+##                      -0.21649                        0.06294  
+##   sci_namePopulus tremuloides  sci_namePseudotsuga menziesii  
+##                       1.30545                       -0.27530  
+##    sci_nameTsuga heterophylla  
+##                       0.82540  
+## 
+## Degrees of Freedom: 1038487 Total (i.e. Null);  1038467 Residual
+## Null Deviance:       1358000 
+## Residual Deviance: 818700    AIC: 818700&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mortality-probability&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Mortality (probability)&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Make a data frame containing a &amp;quot;sci_name&amp;quot; and &amp;quot;yr_since_fire&amp;quot; variable as a new model input:
+new_data &amp;lt;- data.frame(sci_name = rep(unique(trees_20$sci_name), 100)) %&amp;gt;% 
+  arrange(sci_name)
+
+new_data &amp;lt;- data.frame(new_data, yr_since_fire = rep(seq(from = 0, to = 10, length = 100), 20))
+
+tree_20_predictions &amp;lt;- data.frame(new_data, predict(trees_20_model_full, new_data, type = &amp;quot;prob&amp;quot;))
+names(tree_20_predictions) &amp;lt;- c(&amp;quot;sci_name&amp;quot;, &amp;quot;yr_since_fire&amp;quot;, &amp;quot;prob_alive&amp;quot;, &amp;quot;prob_dead&amp;quot;)
+
+# Plot probability of mortality:
+ggplot() +
+  geom_textline(data = tree_20_predictions, 
+                aes(x = yr_since_fire, 
+                    y = prob_alive, 
+                    label = sci_name,
+                    group = sci_name,
+                    color = sci_name), 
+                size = 2.5,
+                show.legend = FALSE) +
+  labs(x = &amp;quot;Years since fire&amp;quot;,
+       y = &amp;quot;Probability of tree being alive&amp;quot;,
+       title = &amp;quot;Predicted tree mortality post-fire&amp;quot;,
+       caption = &amp;quot;Data: Fire and tree mortality database (FTM)&amp;quot;) +
+  scale_y_continuous(breaks = c(0, 0.5,  1), 
+                     labels = c(&amp;quot;0%&amp;quot;, &amp;quot;50%&amp;quot;, &amp;quot;100%&amp;quot;),
+                     limits = c(0, 1)) +
+  scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
+  scale_color_paletteer_d(&amp;quot;ggthemes::Tableau_20&amp;quot;) +
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;more-opportunities&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;More opportunities&lt;/h2&gt;
+&lt;p&gt;There are a &lt;em&gt;bunch&lt;/em&gt; of other variables in this dataset that would be worth considering - like how scorched the tree is post-fire, how large it was to start (height and diameter), evidence of beetle infestation, and more - I’m looking forward to coming back to this dataset in the future &amp;amp; revisiting this model with additional investigation of those variables.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Northwest Reno streetmap - dataviz fun on the side</title>

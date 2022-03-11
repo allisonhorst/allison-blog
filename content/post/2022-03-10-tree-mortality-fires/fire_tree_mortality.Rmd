@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 ## Overview
 
-Basically, there's this awesome dataset on tree survival following fires, the Fire and Tree Mortality Database, and I want to go exploring & compare fire survival across species. Some fun with `tidymodels`, data visualization, binary logistic regression, and my first shot at using the fantastic `geomtextpath` package! 
+Basically, there's this awesome dataset on tree survival following fires, the [Fire and Tree Mortality Database](https://doi.org/10.2737/RDS-2020-0001), and I want to go exploring & compare fire survival across species. Some fun with `tidymodels`, data visualization, binary logistic regression, and my first shot at using the fantastic `geomtextpath` package! 
 
 ## Citations: 
 
@@ -319,7 +319,7 @@ trees_20_model_full
 ### Mortality (probability)
 
 
-```{r, fig.width = 8, fig.height = 14}
+```{r, fig.width = 8, fig.height = 8}
 # Make a data frame containing a "sci_name" and "yr_since_fire" variable as a new model input:
 new_data <- data.frame(sci_name = rep(unique(trees_20$sci_name), 100)) %>% 
   arrange(sci_name)

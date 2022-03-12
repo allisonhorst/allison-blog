@@ -1,0 +1,147 @@
+---
+title: "Losing icons: Disappearing glaciers of Glacier National Park, MT (1966 - 2015)"
+author: "Allison Horst"
+date: '2022-03-11'
+output: html_document
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>Data visualization - glaciers at Glacier National Park (1966, 1998, 2005, and 2005).</p>
+<p><strong>Data:</strong> Fagre, D.B., McKeon, L.A., Dick, K.A., and Fountain, A.G., 2017, Glacier margin time series (1966, 1998, 2005, 2015) of the named glaciers of Glacier National Park, MT, USA: U.S. Geological Survey data release, <a href="https://doi.org/10.5066/F7P26WB1" class="uri">https://doi.org/10.5066/F7P26WB1</a>.</p>
+<pre class="r"><code>library(tidyverse)
+library(sf)
+library(here)
+library(cowplot) # For the plot grid
+library(janitor) # For cleaning names
+library(showtext) # For font changes
+library(ggforce) # For geom_circle() in key
+library(grid) # Add line segments for key
+
+# Import font
+font_add_google(name = &quot;Overpass&quot;, family = &quot;overpass&quot;) # add custom fonts
+font_add_google(name = &quot;Nixie One&quot;, family = &quot;nixie&quot;)
+showtext_auto()</code></pre>
+<pre class="r"><code>glaciers_1966 &lt;- read_sf(here::here(&quot;data&quot;, &quot;GNPglaciers_1966&quot;)) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  mutate(glacname = word(glacname , 1  , -2))
+glaciers_1998 &lt;- read_sf(here::here(&quot;data&quot;, &quot;GNPglaciers_1998&quot;))%&gt;% 
+  janitor::clean_names() %&gt;% 
+  mutate(glacname = word(glacname , 1  , -2))
+glaciers_2005 &lt;- read_sf(here::here(&quot;data&quot;, &quot;GNPglaciers_2005&quot;))%&gt;% 
+  janitor::clean_names() %&gt;% 
+  mutate(glacname = word(glacname , 1  , -2))
+glaciers_2015 &lt;- read_sf(here::here(&quot;data&quot;, &quot;GNPglaciers_2015&quot;))%&gt;% 
+  janitor::clean_names() %&gt;% 
+  mutate(glacname = word(glacname , 1  , -2))</code></pre>
+<pre class="r"><code># Set colors for different years:
+col_1966 &lt;- &quot;#7bb0ae&quot;
+col_1998 &lt;- &quot;#a2c8c6&quot;
+col_2005 &lt;- &quot;#cfe7e5&quot;
+col_2015 &lt;- &quot;white&quot;
+
+glaciers &lt;- purrr::map(glaciers_1966$glacname,
+                       function(x) {
+                         ggplot() +
+                           geom_sf(data = filter(glaciers_1966, glacname == x), 
+                                   fill = col_1966, color = NA) +
+                           geom_sf(data = filter(glaciers_1998, glacname == x),
+                                   fill = col_1998, color = NA) +
+                           geom_sf(data = filter(glaciers_2005, glacname == x),
+                                   fill = col_2005, color = NA) +
+                           geom_sf(data = filter(glaciers_2015, glacname == x),
+                                   fill = col_2015, color = NA) +
+                           ggtitle(x) +
+                           theme_void() +
+                           theme(title = element_text(size = 40, 
+                                                      color = &quot;white&quot;, 
+                                                      family = &quot;overpass&quot;
+                                                      )
+                                 )
+})
+
+
+glacier_grid &lt;- cowplot::plot_grid(plotlist = glaciers) +
+  annotate(&quot;text&quot;, 
+           label = &quot;Shrinking glaciers&quot;, 
+           x = 0.02, y = 1.1,
+           color = &quot;white&quot;,
+           family = &quot;nixie&quot;,
+           size = 55,
+           hjust = 0,
+           fontface = &quot;bold&quot;) +
+  annotate(&quot;text&quot;,
+           label = &quot;Glacier National Park, Montana (1966 - 2015)&quot;,
+           color = &quot;white&quot;,
+           x = 0.02, y = 1.05,
+           family = &quot;nixie&quot;,
+           size = 30,
+           hjust = 0) +
+  geom_circle(aes(x0 = 0.696, y0 = 0.09, r = 0.05), 
+              fill = col_1966, color = NA) +
+  annotate(&quot;text&quot;, label = &quot;1966 extent&quot;, 
+           color = col_1966, 
+           x = 0.81, y = 0.130, 
+           size = 20, 
+           hjust = 0, 
+           family = &quot;overpass&quot;) + 
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_1966, lwd = 2)), 
+                    xmin = 0.70, xmax = 0.80, ymin = 0.130, ymax = 0.130) +
+  geom_circle(aes(x0 = 0.71, y0 = 0.08, r = 0.03), 
+              fill = col_1998, color = NA) +
+  annotate(&quot;text&quot;, label = &quot;1998 extent&quot;, 
+           color = col_1998, 
+           x = 0.81, y = 0.108, 
+           size = 20, 
+           hjust = 0, 
+           family = &quot;overpass&quot;) + 
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_1998, lwd = 2)), 
+                    xmin = 0.71, xmax = 0.80, ymin = 0.108, ymax = 0.108) +
+  geom_circle(aes(x0 = 0.718, y0 = 0.076, r = 0.02), 
+              fill = col_2005, color = NA) +
+  annotate(&quot;text&quot;, label = &quot;2005 extent&quot;, 
+           color = col_2005, 
+           x = 0.81, y = 0.087, 
+           size = 20, 
+           hjust = 0, 
+           family = &quot;overpass&quot;) + 
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_2005, lwd = 2)), 
+                    xmin = 0.735, xmax = 0.80, ymin = 0.087, ymax = 0.087) +
+  geom_circle(aes(x0 = 0.725, y0 = 0.073, r = 0.01), 
+              fill = col_2015, color = NA) +
+  annotate(&quot;text&quot;, label = &quot;2015 extent&quot;, 
+           color = col_2015, 
+           x = 0.81, y = 0.065, 
+           size = 20, 
+           hjust = 0, 
+           family = &quot;overpass&quot;) +
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_2015, lwd = 2)), 
+                    xmin = 0.730, xmax = 0.80, ymin = 0.065, ymax = 0.065) +
+  annotate(&quot;text&quot;, label = &quot;Data: Fagre et al, 2017, Glacier margin time series (1966, 1998, 2005, 2015) of the named glaciers of Glacier National Park, MT, USA: U.S. Geological Survey data release, https://doi.org/10.5066/F7P26WB1.&quot;, 
+           x = 0.04, y = -0.03, 
+           size = 10, 
+           hjust = 0, 
+           color = col_2005) +
+  annotate(&quot;text&quot;, label = &quot;@allison_horst&quot;, 
+           x = 0.91, y = -0.06, 
+           size = 14, 
+           hjust = 0, 
+           color = col_2005, 
+           family = &quot;nixie&quot;) +
+  annotate(&quot;text&quot;, label = &quot;Note: glaciers not to scale&quot;, 
+           x = 0.74, y = 0.04, 
+           size = 15, 
+           hjust = 0, 
+           color = col_2005, 
+           fontface = &quot;italic&quot;) +
+  theme(plot.background = element_rect(fill = &quot;#192c30&quot;, colour = NA),
+          plot.margin = margin(85, 20, 40, 20))
+
+ggsave(plot = glacier_grid, &quot;glaciers.png&quot;, width = 7, height = 8, dpi = 600)
+ggsave(plot = glacier_grid, &quot;featured_glaciers.png&quot;, width = 7, height = 8, dpi = 600)</code></pre>
+<pre class="r"><code>knitr::include_graphics(here::here(&quot;content&quot;, &quot;post&quot;, &quot;2022-03-12-shrinking-glaciers&quot;, &quot;glaciers.png&quot;))</code></pre>
+<p><img src="glaciers.png" width="2100" /></p>
+</div>

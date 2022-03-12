@@ -5,7 +5,7 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Allison Horst</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 10 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 11 Mar 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:square]</url>
       <title>Allison Horst</title>
@@ -55,17 +55,166 @@
     </item>
     
     <item>
-      <title>Exploring tree outcomes following fires</title>
-      <link>/post/2022-03-10-tree-mortality-fires/fire_tree_mortality/</link>
-      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>/post/2022-03-10-tree-mortality-fires/fire_tree_mortality/</guid>
+      <title>Losing icons: Disappearing glaciers of Glacier National Park, MT (1966 - 2015)</title>
+      <link>/post/2022-03-12-shrinking-glaciers/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/post/2022-03-12-shrinking-glaciers/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/post/2022-03-12-shrinking-glaciers/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;overview&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Overview&lt;/h2&gt;
-&lt;p&gt;Basically, there’s this awesome dataset on tree survival following fires, the Fire and Tree Mortality Database, and I want to go exploring &amp;amp; compare fire survival across species. Some fun with &lt;code&gt;tidymodels&lt;/code&gt;, data visualization, binary logistic regression, and my first shot at using the fantastic &lt;code&gt;geomtextpath&lt;/code&gt; package!&lt;/p&gt;
+&lt;p&gt;Data visualization - glaciers at Glacier National Park (1966, 1998, 2005, and 2005).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data:&lt;/strong&gt; Fagre, D.B., McKeon, L.A., Dick, K.A., and Fountain, A.G., 2017, Glacier margin time series (1966, 1998, 2005, 2015) of the named glaciers of Glacier National Park, MT, USA: U.S. Geological Survey data release, &lt;a href=&#34;https://doi.org/10.5066/F7P26WB1&#34; class=&#34;uri&#34;&gt;https://doi.org/10.5066/F7P26WB1&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(sf)
+library(here)
+library(cowplot) # For the plot grid
+library(janitor) # For cleaning names
+library(showtext) # For font changes
+library(ggforce) # For geom_circle() in key
+library(grid) # Add line segments for key
+
+# Import font
+font_add_google(name = &amp;quot;Overpass&amp;quot;, family = &amp;quot;overpass&amp;quot;) # add custom fonts
+font_add_google(name = &amp;quot;Nixie One&amp;quot;, family = &amp;quot;nixie&amp;quot;)
+showtext_auto()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;glaciers_1966 &amp;lt;- read_sf(here::here(&amp;quot;data&amp;quot;, &amp;quot;GNPglaciers_1966&amp;quot;)) %&amp;gt;% 
+  janitor::clean_names() %&amp;gt;% 
+  mutate(glacname = word(glacname , 1  , -2))
+glaciers_1998 &amp;lt;- read_sf(here::here(&amp;quot;data&amp;quot;, &amp;quot;GNPglaciers_1998&amp;quot;))%&amp;gt;% 
+  janitor::clean_names() %&amp;gt;% 
+  mutate(glacname = word(glacname , 1  , -2))
+glaciers_2005 &amp;lt;- read_sf(here::here(&amp;quot;data&amp;quot;, &amp;quot;GNPglaciers_2005&amp;quot;))%&amp;gt;% 
+  janitor::clean_names() %&amp;gt;% 
+  mutate(glacname = word(glacname , 1  , -2))
+glaciers_2015 &amp;lt;- read_sf(here::here(&amp;quot;data&amp;quot;, &amp;quot;GNPglaciers_2015&amp;quot;))%&amp;gt;% 
+  janitor::clean_names() %&amp;gt;% 
+  mutate(glacname = word(glacname , 1  , -2))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Set colors for different years:
+col_1966 &amp;lt;- &amp;quot;#7bb0ae&amp;quot;
+col_1998 &amp;lt;- &amp;quot;#a2c8c6&amp;quot;
+col_2005 &amp;lt;- &amp;quot;#cfe7e5&amp;quot;
+col_2015 &amp;lt;- &amp;quot;white&amp;quot;
+
+glaciers &amp;lt;- purrr::map(glaciers_1966$glacname,
+                       function(x) {
+                         ggplot() +
+                           geom_sf(data = filter(glaciers_1966, glacname == x), 
+                                   fill = col_1966, color = NA) +
+                           geom_sf(data = filter(glaciers_1998, glacname == x),
+                                   fill = col_1998, color = NA) +
+                           geom_sf(data = filter(glaciers_2005, glacname == x),
+                                   fill = col_2005, color = NA) +
+                           geom_sf(data = filter(glaciers_2015, glacname == x),
+                                   fill = col_2015, color = NA) +
+                           ggtitle(x) +
+                           theme_void() +
+                           theme(title = element_text(size = 40, 
+                                                      color = &amp;quot;white&amp;quot;, 
+                                                      family = &amp;quot;overpass&amp;quot;
+                                                      )
+                                 )
+})
+
+
+glacier_grid &amp;lt;- cowplot::plot_grid(plotlist = glaciers) +
+  annotate(&amp;quot;text&amp;quot;, 
+           label = &amp;quot;Shrinking glaciers&amp;quot;, 
+           x = 0.02, y = 1.1,
+           color = &amp;quot;white&amp;quot;,
+           family = &amp;quot;nixie&amp;quot;,
+           size = 55,
+           hjust = 0,
+           fontface = &amp;quot;bold&amp;quot;) +
+  annotate(&amp;quot;text&amp;quot;,
+           label = &amp;quot;Glacier National Park, Montana (1966 - 2015)&amp;quot;,
+           color = &amp;quot;white&amp;quot;,
+           x = 0.02, y = 1.05,
+           family = &amp;quot;nixie&amp;quot;,
+           size = 30,
+           hjust = 0) +
+  geom_circle(aes(x0 = 0.696, y0 = 0.09, r = 0.05), 
+              fill = col_1966, color = NA) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;1966 extent&amp;quot;, 
+           color = col_1966, 
+           x = 0.81, y = 0.130, 
+           size = 20, 
+           hjust = 0, 
+           family = &amp;quot;overpass&amp;quot;) + 
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_1966, lwd = 2)), 
+                    xmin = 0.70, xmax = 0.80, ymin = 0.130, ymax = 0.130) +
+  geom_circle(aes(x0 = 0.71, y0 = 0.08, r = 0.03), 
+              fill = col_1998, color = NA) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;1998 extent&amp;quot;, 
+           color = col_1998, 
+           x = 0.81, y = 0.108, 
+           size = 20, 
+           hjust = 0, 
+           family = &amp;quot;overpass&amp;quot;) + 
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_1998, lwd = 2)), 
+                    xmin = 0.71, xmax = 0.80, ymin = 0.108, ymax = 0.108) +
+  geom_circle(aes(x0 = 0.718, y0 = 0.076, r = 0.02), 
+              fill = col_2005, color = NA) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;2005 extent&amp;quot;, 
+           color = col_2005, 
+           x = 0.81, y = 0.087, 
+           size = 20, 
+           hjust = 0, 
+           family = &amp;quot;overpass&amp;quot;) + 
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_2005, lwd = 2)), 
+                    xmin = 0.735, xmax = 0.80, ymin = 0.087, ymax = 0.087) +
+  geom_circle(aes(x0 = 0.725, y0 = 0.073, r = 0.01), 
+              fill = col_2015, color = NA) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;2015 extent&amp;quot;, 
+           color = col_2015, 
+           x = 0.81, y = 0.065, 
+           size = 20, 
+           hjust = 0, 
+           family = &amp;quot;overpass&amp;quot;) +
+  annotation_custom(grob = linesGrob(gp = gpar(col = col_2015, lwd = 2)), 
+                    xmin = 0.730, xmax = 0.80, ymin = 0.065, ymax = 0.065) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;Data: Fagre et al, 2017, Glacier margin time series (1966, 1998, 2005, 2015) of the named glaciers of Glacier National Park, MT, USA: U.S. Geological Survey data release, https://doi.org/10.5066/F7P26WB1.&amp;quot;, 
+           x = 0.04, y = -0.03, 
+           size = 10, 
+           hjust = 0, 
+           color = col_2005) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;@allison_horst&amp;quot;, 
+           x = 0.91, y = -0.06, 
+           size = 14, 
+           hjust = 0, 
+           color = col_2005, 
+           family = &amp;quot;nixie&amp;quot;) +
+  annotate(&amp;quot;text&amp;quot;, label = &amp;quot;Note: glaciers not to scale&amp;quot;, 
+           x = 0.74, y = 0.04, 
+           size = 15, 
+           hjust = 0, 
+           color = col_2005, 
+           fontface = &amp;quot;italic&amp;quot;) +
+  theme(plot.background = element_rect(fill = &amp;quot;#192c30&amp;quot;, colour = NA),
+          plot.margin = margin(85, 20, 40, 20))
+
+ggsave(plot = glacier_grid, &amp;quot;glaciers.png&amp;quot;, width = 7, height = 8, dpi = 600)
+ggsave(plot = glacier_grid, &amp;quot;featured_glaciers.png&amp;quot;, width = 7, height = 8, dpi = 600)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::include_graphics(here::here(&amp;quot;content&amp;quot;, &amp;quot;post&amp;quot;, &amp;quot;2022-03-12-shrinking-glaciers&amp;quot;, &amp;quot;glaciers.png&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;glaciers.png&#34; width=&#34;2100&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Exploring tree outcomes following fires</title>
+      <link>/post/2022-03-10-tree-mortality-fires/</link>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/post/2022-03-10-tree-mortality-fires/</guid>
+      <description>
+&lt;script src=&#34;/post/2022-03-10-tree-mortality-fires/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;overview&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Basically, there’s this awesome dataset on tree survival following fires, the &lt;a href=&#34;https://doi.org/10.2737/RDS-2020-0001&#34;&gt;Fire and Tree Mortality Database&lt;/a&gt;, and I want to go exploring &amp;amp; compare fire survival across species. Some fun with &lt;code&gt;tidymodels&lt;/code&gt;, data visualization, binary logistic regression, and my first shot at using the fantastic &lt;code&gt;geomtextpath&lt;/code&gt; package!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;citations&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Citations:&lt;/h2&gt;
@@ -104,7 +253,7 @@ ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
   theme_minimal() +
   labs(y = &amp;quot;\nObservations in dataset&amp;quot;,
        x = &amp;quot;Scientific name&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Counts of live (0) and dead (1) for the top 20 most recorded trees in the dataset:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Make a long form of the trees dataset (top 20 most observed tree species)
 trees_long &amp;lt;- trees %&amp;gt;% 
@@ -132,7 +281,7 @@ ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
        subtitle = &amp;quot;Only includes the 20 most observed trees in the dataset&amp;quot;,
        caption = &amp;quot;Data: Fire and tree mortality database (FTM)&amp;quot;) +
   facet_wrap(~sci_name)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/index_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;We can already see some interesting differences in survival across species. For example, &lt;em&gt;Picea mariana&lt;/em&gt; and &lt;em&gt;Abies lasiocarpa&lt;/em&gt; experience quick mortality within the first year; others like &lt;em&gt;Pinus jeffreyi&lt;/em&gt; and &lt;em&gt;Abies concolor&lt;/em&gt; appear more resilient. However, near-complete mortality is observed across all species within 10 years.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;ponderosa-pines---diving-a-bit-deeper&#34; class=&#34;section level2&#34;&gt;
@@ -150,7 +299,7 @@ ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
   scale_y_continuous(breaks = c(0, 1), labels = c(&amp;quot;Live&amp;quot;, &amp;quot;Dead&amp;quot;)) +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
   theme_minimal()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/index_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;div id=&#34;classification-binary-logistic-regression-in-tidymodels&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Classification: binary logistic regression in &lt;code&gt;tidymodels&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;Create the training &amp;amp; testing sets&lt;/p&gt;
@@ -176,32 +325,32 @@ ponderosa_train %&amp;gt;%
 &lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
-##  1             0 0         39769
-##  2             0 1           558
-##  3             1 0         39208
-##  4             1 1         10347
-##  5             2 0         26722
-##  6             2 1         12852
-##  7             3 0         23684
-##  8             3 1         14834
-##  9             4 0          8687
-## 10             4 1         14988
+##  1             0 0         39856
+##  2             0 1           537
+##  3             1 0         38957
+##  4             1 1         10393
+##  5             2 0         26950
+##  6             2 1         12947
+##  7             3 0         23595
+##  8             3 1         14938
+##  9             4 0          8626
+## 10             4 1         14989
 ## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ponderosa_test %&amp;gt;% 
   count(yr_since_fire, live_dead)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
-##  1             0 0          9900
-##  2             0 1           131
-##  3             1 0          9671
-##  4             1 1          2622
-##  5             2 0          6986
-##  6             2 1          3242
-##  7             3 0          5869
-##  8             3 1          3667
-##  9             4 0          2116
-## 10             4 1          3765
+##  1             0 0          9813
+##  2             0 1           152
+##  3             1 0          9922
+##  4             1 1          2576
+##  5             2 0          6758
+##  6             2 1          3147
+##  7             3 0          5958
+##  8             3 1          3563
+##  9             4 0          2177
+## 10             4 1          3764
 ## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;make-a-recipe&#34; class=&#34;section level3&#34;&gt;
@@ -240,8 +389,8 @@ ponderosa_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 4
 ##   .metric  .estimator .estimate .config             
 ##   &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
-## 1 accuracy binary         0.806 Preprocessor1_Model1
-## 2 roc_auc  binary         0.878 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
+## 1 accuracy binary         0.808 Preprocessor1_Model1
+## 2 roc_auc  binary         0.879 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;proof-of-concept-check-out-the-test-set-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Proof of concept: check out the test set predictions&lt;/h3&gt;
@@ -252,26 +401,26 @@ ponderosa_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 20 × 7
 ##    id               .pred_0 .pred_1  .row .pred_class live_dead .config         
 ##    &amp;lt;chr&amp;gt;              &amp;lt;dbl&amp;gt;   &amp;lt;dbl&amp;gt; &amp;lt;int&amp;gt; &amp;lt;fct&amp;gt;       &amp;lt;fct&amp;gt;     &amp;lt;chr&amp;gt;           
-##  1 train/test split  0.912   0.0875    11 0           0         Preprocessor1_M…
-##  2 train/test split  0.723   0.277     13 0           0         Preprocessor1_M…
-##  3 train/test split  0.566   0.434     17 0           1         Preprocessor1_M…
-##  4 train/test split  0.0100  0.990     24 1           1         Preprocessor1_M…
-##  5 train/test split  0.140   0.860     34 1           1         Preprocessor1_M…
-##  6 train/test split  0.839   0.161     44 0           0         Preprocessor1_M…
-##  7 train/test split  0.723   0.277     45 0           0         Preprocessor1_M…
-##  8 train/test split  0.140   0.860     56 1           1         Preprocessor1_M…
-##  9 train/test split  0.245   0.755     70 1           1         Preprocessor1_M…
-## 10 train/test split  0.0751  0.925     72 1           1         Preprocessor1_M…
-## 11 train/test split  0.723   0.277     82 0           0         Preprocessor1_M…
-## 12 train/test split  0.839   0.161     84 0           1         Preprocessor1_M…
-## 13 train/test split  0.723   0.277     85 0           1         Preprocessor1_M…
-## 14 train/test split  0.0390  0.961     91 1           1         Preprocessor1_M…
-## 15 train/test split  0.140   0.860     99 1           1         Preprocessor1_M…
-## 16 train/test split  0.0751  0.925    100 1           1         Preprocessor1_M…
-## 17 train/test split  0.0199  0.980    102 1           1         Preprocessor1_M…
-## 18 train/test split  0.0100  0.990    103 1           1         Preprocessor1_M…
-## 19 train/test split  0.394   0.606    107 1           1         Preprocessor1_M…
-## 20 train/test split  0.0390  0.961    111 1           1         Preprocessor1_M…&lt;/code&gt;&lt;/pre&gt;
+##  1 train/test split  0.722   0.278      2 0           1         Preprocessor1_M…
+##  2 train/test split  0.838   0.162     12 0           0         Preprocessor1_M…
+##  3 train/test split  0.565   0.435     17 0           1         Preprocessor1_M…
+##  4 train/test split  0.139   0.861     20 1           1         Preprocessor1_M…
+##  5 train/test split  0.912   0.0879    25 0           0         Preprocessor1_M…
+##  6 train/test split  0.838   0.162     26 0           0         Preprocessor1_M…
+##  7 train/test split  0.565   0.435     28 0           0         Preprocessor1_M…
+##  8 train/test split  0.393   0.607     32 1           1         Preprocessor1_M…
+##  9 train/test split  0.0749  0.925     35 1           1         Preprocessor1_M…
+## 10 train/test split  0.838   0.162     44 0           0         Preprocessor1_M…
+## 11 train/test split  0.912   0.0879    47 0           0         Preprocessor1_M…
+## 12 train/test split  0.393   0.607     54 1           1         Preprocessor1_M…
+## 13 train/test split  0.139   0.861     71 1           1         Preprocessor1_M…
+## 14 train/test split  0.0389  0.961     73 1           1         Preprocessor1_M…
+## 15 train/test split  0.838   0.162     77 0           0         Preprocessor1_M…
+## 16 train/test split  0.722   0.278     78 0           0         Preprocessor1_M…
+## 17 train/test split  0.393   0.607     87 1           1         Preprocessor1_M…
+## 18 train/test split  0.0749  0.925     90 1           1         Preprocessor1_M…
+## 19 train/test split  0.393   0.607     97 1           1         Preprocessor1_M…
+## 20 train/test split  0.0749  0.925    100 1           1         Preprocessor1_M…&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;confusion-matrix-of-truth-predictions&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Confusion matrix of truth / predictions&lt;/h3&gt;
@@ -281,8 +430,8 @@ ponderosa_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
   conf_mat(truth = live_dead, estimate = .pred_class)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           Truth
 ## Prediction     0     1
-##          0 32426  9662
-##          1  4571 26666&lt;/code&gt;&lt;/pre&gt;
+##          0 32451  9438
+##          1  4613 26823&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;fit-on-entire-dataset&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Fit on entire dataset&lt;/h3&gt;
@@ -342,7 +491,7 @@ ggplot() +
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
   theme_minimal()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/index_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;extending-the-model&#34; class=&#34;section level2&#34;&gt;
@@ -372,32 +521,32 @@ trees_20_train %&amp;gt;%
 &lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
-##  1             0 0         77716
-##  2             0 1          2895
-##  3             1 0         73222
-##  4             1 1         30566
-##  5             2 0         51619
-##  6             2 1         47237
-##  7             3 0         43168
-##  8             3 1         55011
-##  9             4 0         22448
-## 10             4 1         55507
+##  1             0 0         77665
+##  2             0 1          2910
+##  3             1 0         73493
+##  4             1 1         30526
+##  5             2 0         51451
+##  6             2 1         47249
+##  7             3 0         43197
+##  8             3 1         54605
+##  9             4 0         22496
+## 10             4 1         55523
 ## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;trees_20_test %&amp;gt;% 
   count(yr_since_fire, live_dead)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;
-##  1             0 0         19410
-##  2             0 1           759
-##  3             1 0         18541
-##  4             1 1          7628
-##  5             2 0         12917
-##  6             2 1         11829
-##  7             3 0         10793
-##  8             3 1         13457
-##  9             4 0          5578
-## 10             4 1         13936
+##  1             0 0         19461
+##  2             0 1           744
+##  3             1 0         18270
+##  4             1 1          7668
+##  5             2 0         13085
+##  6             2 1         11817
+##  7             3 0         10764
+##  8             3 1         13863
+##  9             4 0          5530
+## 10             4 1         13920
 ## # … with 12 more rows&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;make-a-recipe-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Make a recipe&lt;/h3&gt;
@@ -435,7 +584,7 @@ trees_20_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 2 × 4
 ##   .metric  .estimator .estimate .config             
 ##   &amp;lt;chr&amp;gt;    &amp;lt;chr&amp;gt;          &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;               
-## 1 accuracy binary         0.822 Preprocessor1_Model1
+## 1 accuracy binary         0.821 Preprocessor1_Model1
 ## 2 roc_auc  binary         0.893 Preprocessor1_Model1&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;confusion-matrix-of-truth-predictions-1&#34; class=&#34;section level3&#34;&gt;
@@ -446,8 +595,8 @@ trees_20_fit %&amp;gt;% collect_metrics()&lt;/code&gt;&lt;/pre&gt;
   conf_mat(truth = live_dead, estimate = .pred_class)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##           Truth
 ## Prediction      0      1
-##          0  57924  19938
-##          1  17134 112702&lt;/code&gt;&lt;/pre&gt;
+##          0  57671  19991
+##          1  17265 112771&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;fit-on-entire-dataset-1&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Fit on entire dataset&lt;/h3&gt;
@@ -524,7 +673,7 @@ ggplot() +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c(&amp;quot;0&amp;quot;, &amp;quot;5&amp;quot;, &amp;quot;10&amp;quot;)) +
   scale_color_paletteer_d(&amp;quot;ggthemes::Tableau_20&amp;quot;) +
   theme_minimal()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/fire_tree_mortality_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2022-03-10-tree-mortality-fires/index_files/figure-html/unnamed-chunk-24-1.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;more-opportunities&#34; class=&#34;section level2&#34;&gt;

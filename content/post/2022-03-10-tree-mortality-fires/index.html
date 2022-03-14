@@ -24,9 +24,7 @@ library(naniar)
 library(tidymodels)
 library(geomtextpath)
 library(paletteer)</code></pre>
-<pre class="r"><code>fires &lt;- read_csv(here(&quot;content&quot;, &quot;post&quot;, &quot;2022-03-10-tree-mortality-fires&quot;, &quot;data&quot;, &quot;Data&quot;, &quot;FTM_fires.csv&quot;)) # Fire information
-trees &lt;- read_csv(here(&quot;content&quot;, &quot;post&quot;, &quot;2022-03-10-tree-mortality-fires&quot;, &quot;data&quot;, &quot;Data&quot;, &quot;FTM_trees.csv&quot;)) # Tree outcomes and records
-bark &lt;- read_csv(here(&quot;content&quot;, &quot;post&quot;, &quot;2022-03-10-tree-mortality-fires&quot;, &quot;data&quot;, &quot;Data&quot;, &quot;Species_BarkThickness.csv&quot;)) # Bark thickness </code></pre>
+<pre class="r"><code>trees &lt;- read_csv(here(&quot;content&quot;, &quot;post&quot;, &quot;2022-03-10-tree-mortality-fires&quot;, &quot;data&quot;, &quot;Data&quot;, &quot;FTM_trees.csv&quot;)) # Tree outcomes and records</code></pre>
 <p>Important information: See attributes in <code>_metadata_RDS-2020-0001.html</code> for variable definitions.</p>
 </div>
 <div id="exploratory-data-visualization" class="section level2">
@@ -42,13 +40,13 @@ tree_count_top_20 &lt;- trees %&gt;%
   mutate(sci_name = fct_reorder(sci_name, n)) %&gt;% 
   slice_max(n, n = 20)
 
-ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
+tree_20_gg &lt;- ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
   geom_col() +
   coord_flip() +
   theme_minimal() +
   labs(y = &quot;\nObservations in dataset&quot;,
        x = &quot;Scientific name&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="trees_20_gg.png" width="750" /></p>
 <p>Counts of live (0) and dead (1) for the top 20 most recorded trees in the dataset:</p>
 <pre class="r"><code># Make a long form of the trees dataset (top 20 most observed tree species)
 trees_long &lt;- trees %&gt;% 
@@ -64,7 +62,7 @@ trees_live_dead &lt;- trees_long %&gt;%
   count(sci_name, yr_since_fire, live_dead_chr) %&gt;% 
   drop_na()
   
-ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
+tree_survival_gg &lt;- ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
   geom_col(aes(fill = live_dead_chr), position = &quot;fill&quot;) +
   scale_fill_manual(values = c(&quot;lightsalmon&quot;, &quot;forestgreen&quot;),
                     name = &quot;Live / dead:&quot;) +
@@ -76,7 +74,7 @@ ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
        subtitle = &quot;Only includes the 20 most observed trees in the dataset&quot;,
        caption = &quot;Data: Fire and tree mortality database (FTM)&quot;) +
   facet_wrap(~sci_name)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<p><img src="tree_survival_gg.png" width="1200" /></p>
 <p>We can already see some interesting differences in survival across species. For example, <em>Picea mariana</em> and <em>Abies lasiocarpa</em> experience quick mortality within the first year; others like <em>Pinus jeffreyi</em> and <em>Abies concolor</em> appear more resilient. However, near-complete mortality is observed across all species within 10 years.</p>
 </div>
 <div id="ponderosa-pines---diving-a-bit-deeper" class="section level2">
@@ -85,7 +83,7 @@ ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
 <pre class="r"><code>ponderosa &lt;- trees_long %&gt;% 
   filter(sci_name == &quot;Pinus ponderosa&quot;)</code></pre>
 <p>First, let’s take a look at mortality over time (years since fire):</p>
-<pre class="r"><code>ggplot(data = ponderosa, aes(x = yr_since_fire, y = live_dead)) +
+<pre class="r"><code>survival_gg &lt;- ggplot(data = ponderosa, aes(x = yr_since_fire, y = live_dead)) +
   geom_jitter(alpha = 0.008) +
   labs(x = &quot;Years since fire&quot;,
        y = &quot;Tree status (live / dead)&quot;,
@@ -94,7 +92,7 @@ ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
   scale_y_continuous(breaks = c(0, 1), labels = c(&quot;Live&quot;, &quot;Dead&quot;)) +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c(&quot;0&quot;, &quot;5&quot;, &quot;10&quot;)) +
   theme_minimal()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+<p><img src="ponderosa_survival_gg.png" width="1200" /></p>
 <div id="classification-binary-logistic-regression-in-tidymodels" class="section level3">
 <h3>Classification: binary logistic regression in <code>tidymodels</code></h3>
 <p>Create the training &amp; testing sets</p>
@@ -120,32 +118,32 @@ ponderosa_train %&gt;%
 <pre><code>## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt;
-##  1             0 0         39856
-##  2             0 1           537
-##  3             1 0         38957
-##  4             1 1         10393
-##  5             2 0         26950
-##  6             2 1         12947
-##  7             3 0         23595
-##  8             3 1         14938
-##  9             4 0          8626
-## 10             4 1         14989
+##  1             0 0         39815
+##  2             0 1           535
+##  3             1 0         39058
+##  4             1 1         10455
+##  5             2 0         26918
+##  6             2 1         12846
+##  7             3 0         23654
+##  8             3 1         14864
+##  9             4 0          8630
+## 10             4 1         15046
 ## # … with 12 more rows</code></pre>
 <pre class="r"><code>ponderosa_test %&gt;% 
   count(yr_since_fire, live_dead)</code></pre>
 <pre><code>## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt;
-##  1             0 0          9813
-##  2             0 1           152
-##  3             1 0          9922
-##  4             1 1          2576
-##  5             2 0          6758
-##  6             2 1          3147
-##  7             3 0          5958
-##  8             3 1          3563
-##  9             4 0          2177
-## 10             4 1          3764
+##  1             0 0          9854
+##  2             0 1           154
+##  3             1 0          9821
+##  4             1 1          2514
+##  5             2 0          6790
+##  6             2 1          3248
+##  7             3 0          5899
+##  8             3 1          3637
+##  9             4 0          2173
+## 10             4 1          3707
 ## # … with 12 more rows</code></pre>
 </div>
 <div id="make-a-recipe" class="section level3">
@@ -184,8 +182,8 @@ ponderosa_fit %&gt;% collect_metrics()</code></pre>
 <pre><code>## # A tibble: 2 × 4
 ##   .metric  .estimator .estimate .config             
 ##   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-## 1 accuracy binary         0.808 Preprocessor1_Model1
-## 2 roc_auc  binary         0.879 Preprocessor1_Model1</code></pre>
+## 1 accuracy binary         0.807 Preprocessor1_Model1
+## 2 roc_auc  binary         0.880 Preprocessor1_Model1</code></pre>
 </div>
 <div id="proof-of-concept-check-out-the-test-set-predictions" class="section level3">
 <h3>Proof of concept: check out the test set predictions</h3>
@@ -196,26 +194,26 @@ ponderosa_fit %&gt;% collect_metrics()</code></pre>
 <pre><code>## # A tibble: 20 × 7
 ##    id               .pred_0 .pred_1  .row .pred_class live_dead .config         
 ##    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;     &lt;chr&gt;           
-##  1 train/test split  0.722   0.278      2 0           1         Preprocessor1_M…
-##  2 train/test split  0.838   0.162     12 0           0         Preprocessor1_M…
-##  3 train/test split  0.565   0.435     17 0           1         Preprocessor1_M…
-##  4 train/test split  0.139   0.861     20 1           1         Preprocessor1_M…
-##  5 train/test split  0.912   0.0879    25 0           0         Preprocessor1_M…
-##  6 train/test split  0.838   0.162     26 0           0         Preprocessor1_M…
-##  7 train/test split  0.565   0.435     28 0           0         Preprocessor1_M…
-##  8 train/test split  0.393   0.607     32 1           1         Preprocessor1_M…
-##  9 train/test split  0.0749  0.925     35 1           1         Preprocessor1_M…
-## 10 train/test split  0.838   0.162     44 0           0         Preprocessor1_M…
-## 11 train/test split  0.912   0.0879    47 0           0         Preprocessor1_M…
-## 12 train/test split  0.393   0.607     54 1           1         Preprocessor1_M…
-## 13 train/test split  0.139   0.861     71 1           1         Preprocessor1_M…
-## 14 train/test split  0.0389  0.961     73 1           1         Preprocessor1_M…
-## 15 train/test split  0.838   0.162     77 0           0         Preprocessor1_M…
-## 16 train/test split  0.722   0.278     78 0           0         Preprocessor1_M…
-## 17 train/test split  0.393   0.607     87 1           1         Preprocessor1_M…
-## 18 train/test split  0.0749  0.925     90 1           1         Preprocessor1_M…
-## 19 train/test split  0.393   0.607     97 1           1         Preprocessor1_M…
-## 20 train/test split  0.0749  0.925    100 1           1         Preprocessor1_M…</code></pre>
+##  1 train/test split  0.565   0.435      3 0           1         Preprocessor1_M…
+##  2 train/test split  0.912   0.0882    11 0           0         Preprocessor1_M…
+##  3 train/test split  0.565   0.435     14 0           0         Preprocessor1_M…
+##  4 train/test split  0.246   0.754     19 1           1         Preprocessor1_M…
+##  5 train/test split  0.838   0.162     29 0           1         Preprocessor1_M…
+##  6 train/test split  0.394   0.606     32 1           1         Preprocessor1_M…
+##  7 train/test split  0.912   0.0882    39 0           0         Preprocessor1_M…
+##  8 train/test split  0.0102  0.990     60 1           1         Preprocessor1_M…
+##  9 train/test split  0.912   0.0882    61 0           0         Preprocessor1_M…
+## 10 train/test split  0.838   0.162     62 0           0         Preprocessor1_M…
+## 11 train/test split  0.912   0.0882    65 0           0         Preprocessor1_M…
+## 12 train/test split  0.565   0.435     68 0           1         Preprocessor1_M…
+## 13 train/test split  0.140   0.860     71 1           1         Preprocessor1_M…
+## 14 train/test split  0.565   0.435     79 0           0         Preprocessor1_M…
+## 15 train/test split  0.722   0.278     82 0           0         Preprocessor1_M…
+## 16 train/test split  0.394   0.606     87 1           1         Preprocessor1_M…
+## 17 train/test split  0.0756  0.924     90 1           1         Preprocessor1_M…
+## 18 train/test split  0.0394  0.961     91 1           1         Preprocessor1_M…
+## 19 train/test split  0.0102  0.990    103 1           1         Preprocessor1_M…
+## 20 train/test split  0.0394  0.961    126 1           1         Preprocessor1_M…</code></pre>
 </div>
 <div id="confusion-matrix-of-truth-predictions" class="section level3">
 <h3>Confusion matrix of truth / predictions</h3>
@@ -225,8 +223,8 @@ ponderosa_fit %&gt;% collect_metrics()</code></pre>
   conf_mat(truth = live_dead, estimate = .pred_class)</code></pre>
 <pre><code>##           Truth
 ## Prediction     0     1
-##          0 32451  9438
-##          1  4613 26823</code></pre>
+##          0 32364  9553
+##          1  4596 26812</code></pre>
 </div>
 <div id="fit-on-entire-dataset" class="section level3">
 <h3>Fit on entire dataset</h3>
@@ -275,7 +273,7 @@ predictions_full &lt;- data.frame(predict_over, predict(ponderosa_model_full, pr
 names(predictions_full) &lt;- c(&quot;yr_since_fire&quot;, &quot;prob_alive&quot;, &quot;prob_dead&quot;)
 
 # Plot probability of mortality:
-ggplot() +
+ponderosa_prob_alive &lt;- ggplot() +
   geom_line(data = predictions_full, aes(x = yr_since_fire, y = prob_alive), color = &quot;gray30&quot;, size = 1) +
   labs(x = &quot;Years since fire&quot;,
        y = &quot;Probability of tree being alive&quot;,
@@ -286,7 +284,7 @@ ggplot() +
                      limits = c(0, 1)) +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c(&quot;0&quot;, &quot;5&quot;, &quot;10&quot;)) +
   theme_minimal()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="ponderosa_prob_gg.png" width="900" /></p>
 </div>
 </div>
 <div id="extending-the-model" class="section level2">
@@ -316,32 +314,32 @@ trees_20_train %&gt;%
 <pre><code>## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt;
-##  1             0 0         77665
-##  2             0 1          2910
-##  3             1 0         73493
-##  4             1 1         30526
-##  5             2 0         51451
-##  6             2 1         47249
-##  7             3 0         43197
-##  8             3 1         54605
-##  9             4 0         22496
-## 10             4 1         55523
+##  1             0 0         77746
+##  2             0 1          2902
+##  3             1 0         73109
+##  4             1 1         30620
+##  5             2 0         51806
+##  6             2 1         47314
+##  7             3 0         43230
+##  8             3 1         54831
+##  9             4 0         22408
+## 10             4 1         55584
 ## # … with 12 more rows</code></pre>
 <pre class="r"><code>trees_20_test %&gt;% 
   count(yr_since_fire, live_dead)</code></pre>
 <pre><code>## # A tibble: 22 × 3
 ##    yr_since_fire live_dead     n
 ##            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt;
-##  1             0 0         19461
-##  2             0 1           744
-##  3             1 0         18270
-##  4             1 1          7668
-##  5             2 0         13085
-##  6             2 1         11817
-##  7             3 0         10764
-##  8             3 1         13863
-##  9             4 0          5530
-## 10             4 1         13920
+##  1             0 0         19380
+##  2             0 1           752
+##  3             1 0         18654
+##  4             1 1          7574
+##  5             2 0         12730
+##  6             2 1         11752
+##  7             3 0         10731
+##  8             3 1         13637
+##  9             4 0          5618
+## 10             4 1         13859
 ## # … with 12 more rows</code></pre>
 <div id="make-a-recipe-1" class="section level3">
 <h3>Make a recipe</h3>
@@ -379,7 +377,7 @@ trees_20_fit %&gt;% collect_metrics()</code></pre>
 <pre><code>## # A tibble: 2 × 4
 ##   .metric  .estimator .estimate .config             
 ##   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
-## 1 accuracy binary         0.821 Preprocessor1_Model1
+## 1 accuracy binary         0.820 Preprocessor1_Model1
 ## 2 roc_auc  binary         0.893 Preprocessor1_Model1</code></pre>
 </div>
 <div id="confusion-matrix-of-truth-predictions-1" class="section level3">
@@ -390,8 +388,8 @@ trees_20_fit %&gt;% collect_metrics()</code></pre>
   conf_mat(truth = live_dead, estimate = .pred_class)</code></pre>
 <pre><code>##           Truth
 ## Prediction      0      1
-##          0  57671  19991
-##          1  17265 112771</code></pre>
+##          0  57541  19948
+##          1  17434 112775</code></pre>
 </div>
 <div id="fit-on-entire-dataset-1" class="section level3">
 <h3>Fit on entire dataset</h3>
@@ -449,7 +447,7 @@ tree_20_predictions &lt;- data.frame(new_data, predict(trees_20_model_full, new_
 names(tree_20_predictions) &lt;- c(&quot;sci_name&quot;, &quot;yr_since_fire&quot;, &quot;prob_alive&quot;, &quot;prob_dead&quot;)
 
 # Plot probability of mortality:
-ggplot() +
+all_prob_gg &lt;- ggplot() +
   geom_textline(data = tree_20_predictions, 
                 aes(x = yr_since_fire, 
                     y = prob_alive, 
@@ -468,7 +466,7 @@ ggplot() +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c(&quot;0&quot;, &quot;5&quot;, &quot;10&quot;)) +
   scale_color_paletteer_d(&quot;ggthemes::Tableau_20&quot;) +
   theme_minimal()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.png" width="768" /></p>
+<p><img src="all_prob_gg.png" width="900" /></p>
 </div>
 </div>
 <div id="more-opportunities" class="section level2">

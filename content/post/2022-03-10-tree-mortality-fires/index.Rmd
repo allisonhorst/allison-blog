@@ -30,9 +30,7 @@ library(paletteer)
 ```
 
 ```{r}
-fires <- read_csv(here("content", "post", "2022-03-10-tree-mortality-fires", "data", "Data", "FTM_fires.csv")) # Fire information
 trees <- read_csv(here("content", "post", "2022-03-10-tree-mortality-fires", "data", "Data", "FTM_trees.csv")) # Tree outcomes and records
-bark <- read_csv(here("content", "post", "2022-03-10-tree-mortality-fires", "data", "Data", "Species_BarkThickness.csv")) # Bark thickness 
 ```
 
 Important information: See attributes in `_metadata_RDS-2020-0001.html` for variable definitions. 
@@ -52,7 +50,7 @@ tree_count_top_20 <- trees %>%
   mutate(sci_name = fct_reorder(sci_name, n)) %>% 
   slice_max(n, n = 20)
 
-ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
+tree_20_gg <- ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
   geom_col() +
   coord_flip() +
   theme_minimal() +
@@ -60,9 +58,17 @@ ggplot(data = tree_count_top_20, aes(x = sci_name, y = n)) +
        x = "Scientific name")
 ```
 
+```{r, echo = FALSE}
+ggsave(here::here("content", "post", "2022-03-10-tree-mortality-fires", "trees_20_gg.png"), width = 5,height = 6)
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics(here::here("content", "post", "2022-03-10-tree-mortality-fires", "trees_20_gg.png"))
+```
+
 Counts of live (0) and dead (1) for the top 20 most recorded trees in the dataset:
 
-```{r, fig.width = 8, fig.height = 8}
+```{r}
 # Make a long form of the trees dataset (top 20 most observed tree species)
 trees_long <- trees %>% 
   pivot_longer(cols = yr0status:yr10status, names_to = "yr_outcome", values_to = "live_dead") %>% 
@@ -77,7 +83,7 @@ trees_live_dead <- trees_long %>%
   count(sci_name, yr_since_fire, live_dead_chr) %>% 
   drop_na()
   
-ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
+tree_survival_gg <- ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
   geom_col(aes(fill = live_dead_chr), position = "fill") +
   scale_fill_manual(values = c("lightsalmon", "forestgreen"),
                     name = "Live / dead:") +
@@ -89,7 +95,14 @@ ggplot(data = trees_live_dead, aes(x = yr_since_fire, y = n)) +
        subtitle = "Only includes the 20 most observed trees in the dataset",
        caption = "Data: Fire and tree mortality database (FTM)") +
   facet_wrap(~sci_name)
-  
+```
+
+```{r, echo = FALSE}
+ggsave(here::here("content", "post", "2022-03-10-tree-mortality-fires", "tree_survival_gg.png"), width = 8,height = 8)
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics(here::here("content", "post", "2022-03-10-tree-mortality-fires", "tree_survival_gg.png"))
 ```
 
 We can already see some interesting differences in survival across species. For example, *Picea mariana* and *Abies lasiocarpa* experience quick mortality within the first year; others like *Pinus jeffreyi* and *Abies concolor* appear more resilient. However, near-complete mortality is observed across all species within 10 years. 
@@ -105,8 +118,8 @@ ponderosa <- trees_long %>%
 
 First, let's take a look at mortality over time (years since fire): 
 
-```{r, fig.width = 8, fig.height = 6}
-ggplot(data = ponderosa, aes(x = yr_since_fire, y = live_dead)) +
+```{r}
+survival_gg <- ggplot(data = ponderosa, aes(x = yr_since_fire, y = live_dead)) +
   geom_jitter(alpha = 0.008) +
   labs(x = "Years since fire",
        y = "Tree status (live / dead)",
@@ -116,6 +129,15 @@ ggplot(data = ponderosa, aes(x = yr_since_fire, y = live_dead)) +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c("0", "5", "10")) +
   theme_minimal()
 ```
+
+```{r, echo = FALSE}
+ggsave(plot = survival_gg, here::here("content", "post", "2022-03-10-tree-mortality-fires", "ponderosa_survival_gg.png"), width = 8,height = 6)
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics(here::here("content", "post", "2022-03-10-tree-mortality-fires", "ponderosa_survival_gg.png"))
+```
+
 
 ### Classification: binary logistic regression in `tidymodels`
 
@@ -224,7 +246,7 @@ predictions_full <- data.frame(predict_over, predict(ponderosa_model_full, predi
 names(predictions_full) <- c("yr_since_fire", "prob_alive", "prob_dead")
 
 # Plot probability of mortality:
-ggplot() +
+ponderosa_prob_alive <- ggplot() +
   geom_line(data = predictions_full, aes(x = yr_since_fire, y = prob_alive), color = "gray30", size = 1) +
   labs(x = "Years since fire",
        y = "Probability of tree being alive",
@@ -236,6 +258,15 @@ ggplot() +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c("0", "5", "10")) +
   theme_minimal()
 ```
+
+```{r, echo = FALSE}
+ggsave(plot = ponderosa_prob_alive, here::here("content", "post", "2022-03-10-tree-mortality-fires", "ponderosa_prob_gg.png"), width = 6,height = 6)
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics(here::here("content", "post", "2022-03-10-tree-mortality-fires", "ponderosa_prob_gg.png"))
+```
+
 
 ## Extending the model
 
@@ -319,7 +350,7 @@ trees_20_model_full
 ### Mortality (probability)
 
 
-```{r, fig.width = 8, fig.height = 8}
+```{r}
 # Make a data frame containing a "sci_name" and "yr_since_fire" variable as a new model input:
 new_data <- data.frame(sci_name = rep(unique(trees_20$sci_name), 100)) %>% 
   arrange(sci_name)
@@ -330,7 +361,7 @@ tree_20_predictions <- data.frame(new_data, predict(trees_20_model_full, new_dat
 names(tree_20_predictions) <- c("sci_name", "yr_since_fire", "prob_alive", "prob_dead")
 
 # Plot probability of mortality:
-ggplot() +
+all_prob_gg <- ggplot() +
   geom_textline(data = tree_20_predictions, 
                 aes(x = yr_since_fire, 
                     y = prob_alive, 
@@ -349,6 +380,14 @@ ggplot() +
   scale_x_continuous(breaks = c(0, 5, 10), labels = c("0", "5", "10")) +
   scale_color_paletteer_d("ggthemes::Tableau_20") +
   theme_minimal()
+```
+
+```{r, echo = FALSE}
+ggsave(plot = all_prob_gg, here::here("content", "post", "2022-03-10-tree-mortality-fires", "all_prob_gg.png"), width = 6,height = 6)
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics(here::here("content", "post", "2022-03-10-tree-mortality-fires", "all_prob_gg.png"))
 ```
 
 
